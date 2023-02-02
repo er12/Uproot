@@ -23,11 +23,7 @@ public class PlayerController : MonoBehaviour
     public readonly PlayerWalkingState WalkingState = new PlayerWalkingState();
     public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
 
-    //
-    // TODO: Root attack
-    // public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
-
-
+    public readonly PlayerRootAttackState RootAttackState = new PlayerRootAttackState();
 
 
 
