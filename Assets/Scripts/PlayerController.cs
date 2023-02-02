@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         get { return currentState; }
     }
     public readonly PlayerIdleState IdleState = new PlayerIdleState();
-    public readonly PlayerMovingState MovingState = new PlayerMovingState();
+    public readonly PlayerWalkingState WalkingState = new PlayerWalkingState();
     public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
 
     //
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    
+
     //TODO: Hurt
     // public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
     // TODO: DEAD
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     public delegate void PlayerStatus(float value);
 
     // other vars
-    public bool isGrounded;
+    public bool isAttacking;
 
     public bool isPlayerFacingRight = true;  // For determining which way the player is currently facing.
 
@@ -69,17 +69,19 @@ public class PlayerController : MonoBehaviour
 
     bool isAgainstBoulder;
 
+    // Records of events
+    public Vector2 lastDirection;
     public EnemyController lastAttackedFrom;
 
     void OnEnable()
     {
-        PlayerMovingState.PlayerFlipped += Flip;
+        PlayerWalkingState.PlayerFlipped += Flip;
     }
 
 
     void OnDisable()
     {
-        PlayerMovingState.PlayerFlipped -= Flip;
+        PlayerWalkingState.PlayerFlipped -= Flip;
     }
 
 
@@ -126,9 +128,9 @@ public class PlayerController : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    private void setGrounded(bool value)
+    private void finishAttaking()
     {
-        isGrounded = value;
+        isAttacking = false;
     }
 
     private void Flip()
@@ -182,11 +184,11 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeAnimationState(string newAnimation)
     {
-        /*
+        
         if (currentAnimaton == newAnimation) return;
 
         animator.Play(newAnimation);
-        currentAnimaton = newAnimation;*/
+        currentAnimaton = newAnimation;
     }
 
 
