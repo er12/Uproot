@@ -14,9 +14,17 @@ public class RootController : MonoBehaviour
     private float speed = 1;
     public int ticks = 0;
 
+    private SpriteRenderer spriteRenderer;
+
+    public void SetSprite(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
+    }
+
     private void Awake()
 	{
         RootIndicatorController.OnSelect += OnSelect;
+        spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	private void OnDestroy()
@@ -46,11 +54,11 @@ public class RootController : MonoBehaviour
 
         Vector2 direction = player.lastDirection.normalized;
 
-        for (var i = 0; i < ticks; i++)
+        /*for (var i = 0; i < ticks; i++)
         {
             yield return new WaitForSeconds(moveSpeed);
             transform.position += (Vector3)direction * speed;
-        }
+        }*/
         //OnSelect?.Invoke();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
