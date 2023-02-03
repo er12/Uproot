@@ -41,20 +41,28 @@ public class PlayerRootAttackState : PlayerBaseState
 
     IEnumerator doRootAttack(PlayerController player)
     {
-
         Vector2 playersPosition = player.transform.position;
-        rootsPosition = playersPosition + player.lastDirection.normalized;
-        
+        Vector2 direction = player.lastDirection.normalized;
+
+        // Down root is a little off apart, this code puts it near
+        if (direction.x == 0 && direction.y == -1)
+        {
+            direction.y = -0.5f;
+        }
+        rootsPosition = playersPosition + direction;
+
         yield return new WaitForSeconds(.25f);
         var root = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
         root.transform.parent = player.gameObject.transform;
 
-        yield return new WaitForSeconds(player.maxRootLengthTime);
+        //yield return new WaitForSeconds(player.maxRootLengthTime);
+        yield return new WaitForSeconds(4f);
+
+
         if (!grabbedSomething)
         {
             player.TransitionToState(player.IdleState);
 
         }
     }
-
 }

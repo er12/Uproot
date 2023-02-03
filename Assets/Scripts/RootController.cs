@@ -22,17 +22,11 @@ public class RootController : MonoBehaviour
     void Start()
     {
         player = gameObject.GetComponentInParent(typeof(PlayerController)) as PlayerController;
-
-        if (player.lastDirection.x > 0.1) direction.x = 1;
-        if (player.lastDirection.y > 0.1) direction.y = 1;
-        if (player.lastDirection.x < 0.1) direction.x = -1;
-        if (player.lastDirection.y < 0.1) direction.y = -1;
-
-        // direction.x = player.lastDirection.x > 0 ? 1 : -1;
-        // direction.y = player.lastDirection.y > 0 ? 1 : -1;
+        direction = player.lastDirection.normalized;
+        Debug.Log("direction");
+        Debug.Log(direction);
 
         StartCoroutine(die());
-                Debug.Log(direction);
     }
 
     // Update is called once per frame
@@ -40,11 +34,10 @@ public class RootController : MonoBehaviour
     {
         if (rootIsmoving)
         {
-
             if (Time.time > nextActionTime)
             {
                 transform.Translate(direction * (tileSize * tileCounter) * Time.deltaTime);
-                
+
                 tileCounter++;
                 nextActionTime += period;
                 // execute block of code here
