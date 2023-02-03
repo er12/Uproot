@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 3f;
 
     public float currentHealth;
+    public float maxRootLengthTime = 2f;
 
     // State machine
 

@@ -41,6 +41,10 @@ public class PlayerWalkingState : PlayerBaseState
         {
             player.TransitionToState(player.AttackingState);
         }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            player.TransitionToState(player.RootAttackState);
+        }
 
     }
 

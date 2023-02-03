@@ -5,6 +5,13 @@ using UnityEngine;
 public class PlayerRootAttackState : PlayerBaseState
 {
     private string animationName = "RootAttack";
+    private string rootRouteString = "Prefabs/Root";
+
+    Vector2 rootsPosition;
+
+
+    public bool grabbedSomething = false;
+
     public override void EnterState(PlayerController player)
     {
         player.ChangeAnimationState(animationName);
@@ -15,7 +22,8 @@ public class PlayerRootAttackState : PlayerBaseState
 
         player.Rigidbody.velocity = Vector2.zero;
 
-        player.StartCoroutine(waitseconds(player));
+        //TODO: Remove when finished root
+        player.StartCoroutine(doRootAttack(player));
 
     }
 
@@ -31,10 +39,22 @@ public class PlayerRootAttackState : PlayerBaseState
     {
     }
 
-    IEnumerator waitseconds(PlayerController player)
+    IEnumerator doRootAttack(PlayerController player)
     {
-        yield return new WaitForSeconds(1f);
+
+        Vector2 playersPosition = player.transform.position;
+        rootsPosition = playersPosition + player.lastDirection.normalized;
+        
+        yield return new WaitForSeconds(.25f);
+        var root = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
+        root.transform.parent = player.gameObject.transform;
+
+        yield return new WaitForSeconds(player.maxRootLengthTime);
+        if (!grabbedSomething)
+        {
             player.TransitionToState(player.IdleState);
+
+        }
     }
 
 }
