@@ -53,7 +53,7 @@ public class PlayerRootAttackState : PlayerBaseState
         var rootIndicator = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
         var rootIndicatorController = rootIndicator.GetComponent<RootIndicatorController>();
         rootIndicatorController.Init(player.lastDirection.normalized);
-        var rootController = Object.Instantiate(Resources.Load("Prefabs/Root") as GameObject, rootsPosition, Quaternion.identity).GetComponent<RootController>();
+        //var rootController = Object.Instantiate(Resources.Load("Prefabs/Root") as GameObject, rootsPosition, Quaternion.identity).GetComponent<RootController>();
 
         //yield return new WaitForSeconds(player.maxRootLengthTime);
         yield return new WaitForSeconds(1f);
