@@ -25,13 +25,11 @@ public class PlayerIdleState : PlayerBaseState
         {
             player.TransitionToState(player.WalkingState);
         }
-
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetButtonDown("Attack"))
         {
             player.TransitionToState(player.AttackingState);
         }
-
-        if (Input.GetKey(KeyCode.Z))
+        else if (Input.GetButtonDown("Root"))
         {
             player.TransitionToState(player.RootAttackState);
         }
