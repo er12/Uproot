@@ -134,9 +134,10 @@ GameObject:
   - component: {fileID: 86144152}
   - component: {fileID: 86144154}
   - component: {fileID: 86144153}
+  - component: {fileID: 86144155}
   m_Layer: 0
   m_Name: PlantWarp
-  m_TagString: Untagged
+  m_TagString: PlantWarp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,6 +226,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &86144155
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86144151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &261519669
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,7 +3177,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
@@ -8143,7 +8160,6 @@ MonoBehaviour:
   jumpSpeed: 3
   maxHealth: 3
   currentHealth: 0
-  maxRootTicks: 4
   isAttacking: 0
   isPlayerFacingRight: 1
   respawnPoint: {x: 0, y: 0}

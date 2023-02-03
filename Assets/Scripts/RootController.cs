@@ -1,50 +1,88 @@
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class RootController : MonoBehaviour
 {
-    Vector2 direction = new Vector2(0f, 1f);
-    Rigidbody2D rb;
-    private float moveSpeed = 0.15f;
-    public bool isPressed = false;
+    public static event Action OnRootPlantWarpGrab;
+    public static event Action OnRootEnemyGrab;
+    public static event Action OnRootItemGrab;
+    public static event Action OnRootNothingGrab;
 
-    PlayerController player;
+    private float moveSpeed = 0.15f;
+    private float speed = 1;
+    public int ticks = 0;
 
     private void Awake()
 	{
-        player = GameObject.FindObjectOfType<PlayerController>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        RootIndicatorController.OnSelect += OnSelect;
 	}
 
-    public void Init(Vector2 direction)
+	private void OnDestroy()
+	{
+		RootIndicatorController.OnSelect -= OnSelect;
+	}
+
+	void OnSelect(int ticks)
     {
-        this.direction = direction;
-        isPressed = true;
+        this.ticks = ticks;
+        //Debug.Log("INSTANTIATING ROOT");
         StartCoroutine(Move());
+    }
+
+	void Start()
+    {
+    }
+
+    void Update()
+    {
+
     }
 
     private IEnumerator Move()
     {
-        for (var i = 0; i < player.maxRootTicks; i++)
+        var player = FindObjectOfType<PlayerController>();
+
+        Vector2 direction = player.lastDirection.normalized;
+
+        for (var i = 0; i < ticks; i++)
         {
-            yield return null;
-            if (!isPressed) break;
             yield return new WaitForSeconds(moveSpeed);
-            transform.position += (Vector3)direction;
+            transform.position += (Vector3)direction * speed;
         }
+        //OnSelect?.Invoke();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
-	private void Update()
-	{
-        if (!Input.GetButton("Root"))
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.tag == Constants.GrabableObjects.PlantWarp)
         {
-            isPressed = false;
+            OnRootPlantWarpGrab?.Invoke();
         }
-        if (Input.GetButtonUp("Root"))
+        else if (other.tag == Constants.GrabableObjects.Enemy)
         {
-            isPressed = false;
+            OnRootEnemyGrab?.Invoke();
         }
-	}
+        else if (other.tag == Constants.GrabableObjects.Item)
+        {
+            OnRootItemGrab?.Invoke();
+        }
+        else
+        {
+            StartCoroutine(NothingGrabbed());
+            return;
+        }
+
+        Destroy(gameObject);
+    }
+    private IEnumerator NothingGrabbed()
+    {
+        OnRootNothingGrab?.Invoke();
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
 }

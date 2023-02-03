@@ -9,8 +9,6 @@ public class PlayerWalkingState : PlayerBaseState
     public override void EnterState(PlayerController player)
     {
         player.ChangeAnimationState("Walking");
-        Debug.Log("player");
-        
 
         player.Rigidbody.velocity = new Vector2(movement.x * player.moveSpeed, player.Rigidbody.velocity.y);
     }
