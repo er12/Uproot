@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     void OnEnable()
     {
         PlayerWalkingState.PlayerFlipped += Flip;
+        RootController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
     }
 
     void OnDisable()
@@ -112,7 +113,6 @@ public class PlayerController : MonoBehaviour
 
     public void TransitionToState(PlayerBaseState state)
     {
-        Debug.Log(state);
         currentState = state;
         currentState.EnterState(this);
     }
@@ -173,6 +173,13 @@ public class PlayerController : MonoBehaviour
 
         animator.Play(newAnimation);
         currentAnimaton = newAnimation;
+    }
+
+    public void PlayerGrabPlantWithRoot()
+    {
+
+        Debug.Log("PlayerGrabPlantWithRoot");
+
     }
 }
 
