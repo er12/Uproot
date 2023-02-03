@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 9092f1deca7e66f4bb0c9754913f62f6
+guid: 822c41078147b674182b6b0f3c95013c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7521697127347132656
-    second: turtle_2
+      213: -2668059363940460912
+    second: turtle 1_2
   - first:
-      213: 231807237200413646
-    second: turtle_3
+      213: -178373424358738626
+    second: turtle 1_3
   - first:
-      213: -3873956415563203196
-    second: turtle_4
+      213: 65391291862832605
+    second: turtle 1_4
   - first:
-      213: 8242098078855365452
-    second: turtle_5
+      213: -6803879660876498056
+    second: turtle 1_5
   - first:
-      213: -6330902930413198508
-    second: turtle_6
+      213: 1795841402891500240
+    second: turtle 1_6
   - first:
-      213: 2066510742272872450
-    second: turtle_7
+      213: -7152883808279115078
+    second: turtle 1_7
   - first:
-      213: -7617003907115058534
-    second: turtle_8
+      213: -9171649343434980292
+    second: turtle 1_9
   - first:
-      213: 5545694312671666409
-    second: turtle_9
+      213: -5953052722762769372
+    second: turtle 1_11
   - first:
-      213: 7100918178036704810
-    second: turtle_10
+      213: 5196876225420223175
+    second: turtle 1_13
   - first:
-      213: 4510350633099446697
-    second: turtle_11
+      213: -1025556333633996943
+    second: turtle 1_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,11 +121,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turtle_2
+      name: turtle 1_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 1
+        y: 49
         width: 16
         height: 16
       alignment: 7
@@ -135,18 +135,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f81a978faf626860800000000000000
-      internalID: 7521697127347132656
+      spriteID: 0969cacf42629fad0800000000000000
+      internalID: -2668059363940460912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_3
+      name: turtle 1_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
+        x: 17
+        y: 49
         width: 16
         height: 16
       alignment: 7
@@ -156,18 +156,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec302bd347b873300800000000000000
-      internalID: 231807237200413646
+      spriteID: e353abbc05a468df0800000000000000
+      internalID: -178373424358738626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_4
+      name: turtle 1_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
+        x: 33
+        y: 49
         width: 16
         height: 16
       alignment: 7
@@ -177,18 +177,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48d72074a21fc3ac0800000000000000
-      internalID: -3873956415563203196
+      spriteID: dd553e2980158e000800000000000000
+      internalID: 65391291862832605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_5
+      name: turtle 1_5
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
+        x: 49
+        y: 49
         width: 16
         height: 16
       alignment: 7
@@ -198,18 +198,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c438a12c880d16270800000000000000
-      internalID: 8242098078855365452
+      spriteID: 87b73f63f73c391a0800000000000000
+      internalID: -6803879660876498056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_6
+      name: turtle 1_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 1
+        y: 33
         width: 16
         height: 16
       alignment: 7
@@ -219,18 +219,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 453ed3dc35d1428a0800000000000000
-      internalID: -6330902930413198508
+      spriteID: 0da794cbd3c1ce810800000000000000
+      internalID: 1795841402891500240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_7
+      name: turtle 1_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 33
+        y: 33
         width: 16
         height: 16
       alignment: 7
@@ -240,18 +240,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20014bd3298bdac10800000000000000
-      internalID: 2066510742272872450
+      spriteID: aba41efe21adbbc90800000000000000
+      internalID: -7152883808279115078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_8
+      name: turtle 1_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 1
+        y: 18
         width: 16
         height: 16
       alignment: 7
@@ -261,18 +261,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9af4a79d47fa4690800000000000000
-      internalID: -7617003907115058534
+      spriteID: c340d100481c7b080800000000000000
+      internalID: -9171649343434980292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_9
+      name: turtle 1_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 33
+        y: 17
         width: 16
         height: 16
       alignment: 7
@@ -282,18 +282,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e0e2b3589346fc40800000000000000
-      internalID: 5545694312671666409
+      spriteID: 42c9d8ad612826da0800000000000000
+      internalID: -5953052722762769372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_10
+      name: turtle 1_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 2
         width: 16
         height: 16
       alignment: 7
@@ -303,18 +303,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a26edfce5778b8260800000000000000
-      internalID: 7100918178036704810
+      spriteID: 7c268dd84630f1840800000000000000
+      internalID: 5196876225420223175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle_11
+      name: turtle 1_14
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 33
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -324,8 +324,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a9c952010cf79e30800000000000000
-      internalID: 4510350633099446697
+      spriteID: 177f79cb2fd74c1f0800000000000000
+      internalID: -1025556333633996943
       vertices: []
       indices: 
       edges: []
