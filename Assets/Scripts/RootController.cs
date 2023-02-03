@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class RootController : MonoBehaviour
 {
-    Vector2 direction = new Vector2(0f,1f);
+    Vector2 direction = new Vector2(0f, 1f);
     Rigidbody2D rb;
-    private float moveSpeed = 0.5f;
+    private float moveSpeed = 0.35f;
     private bool rootIsmoving = false;
-    private float maxTicks = 4f;
 
-	private void Awake()
+    PlayerController player;
+    private void Awake()
 	{
-		rb = gameObject.GetComponent<Rigidbody2D>();
+        player = GameObject.FindObjectOfType<PlayerController>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
 	}
 
 	void Start()
@@ -22,18 +23,18 @@ public class RootController : MonoBehaviour
     public void Init(Vector2 direction)
     {
         this.direction = direction;
-        Debug.Log(direction);
         rootIsmoving = true;
         StartCoroutine(Move());
     }
 
     private IEnumerator Move()
     {
-        for (int i = 0; i < maxTicks; i++)
+        for (int i = 0; i < player.maxRootTicks; i++)
         {
             yield return new WaitForSeconds(moveSpeed);
             transform.position += (Vector3)direction;
         }
+
     }
 
     /*void Update()

@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 3f;
 
     public float currentHealth;
-    public float maxRootLengthTime = 2f;
+    public float maxRootTicks = 4f;
+
 
     // State machine
 
@@ -23,8 +24,8 @@ public class PlayerController : MonoBehaviour
     public readonly PlayerIdleState IdleState = new PlayerIdleState();
     public readonly PlayerWalkingState WalkingState = new PlayerWalkingState();
     public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
-
     public readonly PlayerRootAttackState RootAttackState = new PlayerRootAttackState();
+    public readonly PlayerDodgingState DodgingState = new PlayerDodgingState();
 
 
 
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
 
     public void TransitionToState(PlayerBaseState state)
     {
+        Debug.Log(state);
         currentState = state;
         currentState.EnterState(this);
     }
@@ -181,7 +183,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeAnimationState(string newAnimation)
     {
-        
+
         if (currentAnimaton == newAnimation) return;
 
         animator.Play(newAnimation);

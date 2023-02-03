@@ -48,6 +48,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -72,8 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1178414241163849317, guid: e65fe0d4ed7f8b24282ccacefa3247eb,
-    type: 3}
+  m_Sprite: {fileID: 1178414241163849317, guid: e65fe0d4ed7f8b24282ccacefa3247eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,10 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2bbd0598e03534f968922591a07f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: 0.5
-  period: 120
-  tileCounter: 1
-  tileSize: 16
 --- !u!50 &3538674911158179381
 Rigidbody2D:
   serializedVersion: 4
