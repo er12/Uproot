@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     bool isAgainstBoulder;
 
     // Records of events
-    public Vector2 lastDirection;
+    public Vector2 lastDirection = new Vector2(0f, -1f);
     public EnemyController lastAttackedFrom;
 
     void OnEnable()

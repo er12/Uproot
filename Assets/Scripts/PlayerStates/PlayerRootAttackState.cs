@@ -49,14 +49,16 @@ public class PlayerRootAttackState : PlayerBaseState
         {
             direction.y = -0.5f;
         }
+
         rootsPosition = playersPosition + direction;
 
         yield return new WaitForSeconds(.25f);
         var root = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
-        root.transform.parent = player.gameObject.transform;
+        var rootController = root.GetComponent<RootController>();
+        rootController.Init(player.lastDirection.normalized);
 
         //yield return new WaitForSeconds(player.maxRootLengthTime);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
 
 
         if (!grabbedSomething)
