@@ -5,50 +5,46 @@ public class RootController : MonoBehaviour
 {
     Vector2 direction = new Vector2(0f, 1f);
     Rigidbody2D rb;
-    private float moveSpeed = 0.35f;
-    private bool rootIsmoving = false;
+    private float moveSpeed = 0.15f;
+    public bool isPressed = false;
 
     PlayerController player;
+
     private void Awake()
 	{
         player = GameObject.FindObjectOfType<PlayerController>();
         rb = gameObject.GetComponent<Rigidbody2D>();
 	}
 
-	void Start()
-    {
-        StartCoroutine(die());
-    }
-
     public void Init(Vector2 direction)
     {
         this.direction = direction;
-        rootIsmoving = true;
+        isPressed = true;
         StartCoroutine(Move());
     }
 
     private IEnumerator Move()
     {
-        for (int i = 0; i < player.maxRootTicks; i++)
+        for (var i = 0; i < player.maxRootTicks; i++)
         {
+            yield return null;
+            if (!isPressed) break;
             yield return new WaitForSeconds(moveSpeed);
             transform.position += (Vector3)direction;
         }
-
-    }
-
-    /*void Update()
-    {
-        if (rootIsmoving)
-        {
-            rb.velocity = direction * moveSpeed;
-        }
-
-    }*/
-
-    IEnumerator die()
-    {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
+
+	private void Update()
+	{
+        if (!Input.GetButton("Root"))
+        {
+            isPressed = false;
+        }
+        if (Input.GetButtonUp("Root"))
+        {
+            isPressed = false;
+        }
+	}
 }

@@ -58,7 +58,7 @@ public class PlayerRootAttackState : PlayerBaseState
         rootController.Init(player.lastDirection.normalized);
 
         //yield return new WaitForSeconds(player.maxRootLengthTime);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
 
         if (!grabbedSomething)

@@ -5,6 +5,7 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
+    public RootController rootController;
     public float moveSpeed = 16f;
     public float jumpSpeed = 3f;
 
@@ -13,9 +14,7 @@ public class PlayerController : MonoBehaviour
     public float currentHealth;
     public float maxRootTicks = 4f;
 
-
     // State machine
-
     private PlayerBaseState currentState;
     public PlayerBaseState CurrentState
     {
@@ -27,17 +26,13 @@ public class PlayerController : MonoBehaviour
     public readonly PlayerRootAttackState RootAttackState = new PlayerRootAttackState();
     public readonly PlayerDodgingState DodgingState = new PlayerDodgingState();
 
-
-
     //TODO: Hurt
     // public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
     // TODO: DEAD
     // public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
 
-
     // For animations
     private string currentAnimaton;
-
 
     private Rigidbody2D rb;
     public Rigidbody2D Rigidbody
@@ -57,13 +52,11 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 respawnPoint;
 
-
     public Animator animator;
 
     public SpriteRenderer sprite;
 
     public BoxCollider2D AttackCheck;
-
 
     bool isAgainstBoulder;
 
@@ -76,14 +69,11 @@ public class PlayerController : MonoBehaviour
         PlayerWalkingState.PlayerFlipped += Flip;
     }
 
-
     void OnDisable()
     {
         PlayerWalkingState.PlayerFlipped -= Flip;
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         if (!playerExists)
@@ -160,7 +150,6 @@ public class PlayerController : MonoBehaviour
     //     TransitionToState(DisabledState);
     // }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -177,10 +166,6 @@ public class PlayerController : MonoBehaviour
                 */
     }
 
-
-
-
-
     public void ChangeAnimationState(string newAnimation)
     {
 
@@ -189,8 +174,6 @@ public class PlayerController : MonoBehaviour
         animator.Play(newAnimation);
         currentAnimaton = newAnimation;
     }
-
-
 }
 
 

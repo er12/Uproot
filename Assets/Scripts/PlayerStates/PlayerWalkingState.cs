@@ -39,16 +39,11 @@ public class PlayerWalkingState : PlayerBaseState
             player.TransitionToState(player.IdleState);
         }
 
-        if (Input.GetKey(KeyCode.Z))
-        {
-            player.TransitionToState(player.RootAttackState);
-        }
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetButtonDown("Attack"))
         {
             player.TransitionToState(player.AttackingState);
-
         }
-        if (Input.GetKey(KeyCode.C))
+        else if (Input.GetButtonDown("Root"))
         {
             player.TransitionToState(player.RootAttackState);
         }
