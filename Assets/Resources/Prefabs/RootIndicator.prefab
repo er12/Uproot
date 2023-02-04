@@ -43,7 +43,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5346617078553914172}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -51,7 +51,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -76,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 4211618161493542690, guid: e65fe0d4ed7f8b24282ccacefa3247eb, type: 3}
+  m_Sprite: {fileID: 4211618161493542690, guid: e65fe0d4ed7f8b24282ccacefa3247eb,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,15 +103,17 @@ MonoBehaviour:
   body: {fileID: -6768229247492636757, guid: bfbd8b03bad407045979920be13997fc, type: 3}
   tail: {fileID: -4225591362930417837, guid: bfbd8b03bad407045979920be13997fc, type: 3}
   hole: {fileID: 8298126910812873162, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  headVertical: {fileID: -6574824623222042629, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  bodyVertical: {fileID: -9046203508644872386, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  tailVertical: {fileID: -1944617289660482498, guid: bfbd8b03bad407045979920be13997fc, type: 3}
+  headVertical: {fileID: -6574824623222042629, guid: bfbd8b03bad407045979920be13997fc,
+    type: 3}
+  bodyVertical: {fileID: -9046203508644872386, guid: bfbd8b03bad407045979920be13997fc,
+    type: 3}
+  tailVertical: {fileID: -1944617289660482498, guid: bfbd8b03bad407045979920be13997fc,
+    type: 3}
   isPressed: 0
   animator: {fileID: 0}
   audioSource: {fileID: 0}
   handOutOfGround: {fileID: 8300000, guid: 8b4647a95c1862442a4bb455b1e2a317, type: 3}
   groundPierce: {fileID: 8300000, guid: 9f016781b41952e4aa040d8fc85d778d, type: 3}
-  volume: 0.5
 --- !u!50 &3538674911158179381
 Rigidbody2D:
   serializedVersion: 4

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -6768229247492636757, guid: bfbd8b03bad407045979920be13997fc,
+  m_Sprite: {fileID: 4211618161493542690, guid: e65fe0d4ed7f8b24282ccacefa3247eb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,10 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e197560e54a324f8f5e88ba4af8633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: -2198359758543513925, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  body: {fileID: -6768229247492636757, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  tail: {fileID: -4225591362930417837, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  hole: {fileID: 8298126910812873162, guid: bfbd8b03bad407045979920be13997fc, type: 3}
   ticks: 0
 --- !u!50 &3538674911158179381
 Rigidbody2D:
@@ -130,7 +126,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5346617078553914172}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

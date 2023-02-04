@@ -11,17 +11,9 @@ public class RootController : MonoBehaviour
     private float speed = 1;
     public int ticks = 0;
 
-    private SpriteRenderer spriteRenderer;
-
-    public void SetSprite(Sprite sprite)
-    {
-        spriteRenderer.sprite = sprite;
-    }
-
     private void Awake()
     {
         RootIndicatorController.OnRootNothingGrab += OnNothingGrabbed;
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnDestroy()
