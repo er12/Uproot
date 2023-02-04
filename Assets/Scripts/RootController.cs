@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class RootController : MonoBehaviour
 {
-    public static event Action OnRootPlantWarpGrab;
-    public static event Action OnRootEnemyGrab;
-    public static event Action OnRootItemGrab;
-    public static event Action OnRootNothingGrab;
+
 
     private float moveSpeed = 0.15f;
     private float speed = 1;
@@ -22,24 +19,22 @@ public class RootController : MonoBehaviour
     }
 
     private void Awake()
-	{
-        RootIndicatorController.OnSelect += OnSelect;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-	}
-
-	private void OnDestroy()
-	{
-		RootIndicatorController.OnSelect -= OnSelect;
-	}
-
-	void OnSelect(int ticks)
     {
-        this.ticks = ticks;
-        //Debug.Log("INSTANTIATING ROOT");
-        StartCoroutine(Move());
+        RootIndicatorController.OnRootNothingGrab += OnNothingGrabbed;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-	void Start()
+    private void OnDestroy()
+    {
+        RootIndicatorController.OnRootNothingGrab -= OnNothingGrabbed;
+    }
+
+    void OnNothingGrabbed()
+    {
+        StartCoroutine(RetractRoot());
+    }
+
+    void Start()
     {
     }
 
@@ -48,49 +43,18 @@ public class RootController : MonoBehaviour
 
     }
 
-    private IEnumerator Move()
+    private IEnumerator RetractRoot()
     {
         var player = FindObjectOfType<PlayerController>();
 
-        Vector2 direction = player.lastDirection.normalized;
-
-        /*for (var i = 0; i < ticks; i++)
-        {
-            yield return new WaitForSeconds(moveSpeed);
-            transform.position += (Vector3)direction * speed;
-        }*/
-        //OnSelect?.Invoke();
+        // Vector2 direction = player.lastDirection.normalized;
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-        if (other.tag == Constants.GrabableObjects.PlantWarp)
-        {
-            OnRootPlantWarpGrab?.Invoke();
-        }
-        else if (other.tag == Constants.GrabableObjects.Enemy)
-        {
-            OnRootEnemyGrab?.Invoke();
-        }
-        else if (other.tag == Constants.GrabableObjects.Item)
-        {
-            OnRootItemGrab?.Invoke();
-        }
-        else
-        {
-            StartCoroutine(NothingGrabbed());
-            return;
-        }
 
         Destroy(gameObject);
     }
-    private IEnumerator NothingGrabbed()
-    {
-        OnRootNothingGrab?.Invoke();
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
-    }
+
+
+    
+
+
 }

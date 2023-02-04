@@ -40,9 +40,6 @@ public class EnemyRoamingState : EnemyBaseState
             do
             {
                 float x = Random.Range(getInferiorLim((int)inGridPosition.x), getSuperiorLim((int)inGridPosition.x));
-                Debug.Log("x = " + x);
-                
-                
                 float y = Random.Range(getInferiorLim((int)inGridPosition.y), getSuperiorLim((int)inGridPosition.y)) * (x != 0f ? 0 : 1);
                 newVector = new Vector2(x, y);
                 

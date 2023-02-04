@@ -20,7 +20,11 @@ public class RootIndicatorController : MonoBehaviour
     private float speed = 1;
     private int maxTicks = 4;
     public bool isPressed = false;
-    public static event Action<int> OnSelect;
+
+        public static event Action OnRootPlantWarpGrab;
+    public static event Action OnRootEnemyGrab;
+    public static event Action OnRootItemGrab;
+    public static event Action OnRootNothingGrab;
 
     public void Init(Vector2 direction)
     {
@@ -57,7 +61,7 @@ public class RootIndicatorController : MonoBehaviour
             if (direction.y < 0f) rootController.transform.localScale = new Vector3(1f, -1f, 1f);
         }
         yield return new WaitForSeconds(.2f);
-        OnSelect?.Invoke(i);
+        OnRootNothingGrab?.Invoke();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
@@ -68,5 +72,35 @@ public class RootIndicatorController : MonoBehaviour
         {
             isPressed = false;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.tag);
+
+        if (other.tag == Constants.GrabableObjects.PlantWarp)
+        {
+            OnRootPlantWarpGrab?.Invoke();
+        }
+        else if (other.tag == Constants.GrabableObjects.Enemy)
+        {
+            OnRootEnemyGrab?.Invoke();
+        }
+        else if (other.tag == Constants.GrabableObjects.Item)
+        {
+            OnRootItemGrab?.Invoke();
+        }
+        else
+        {
+            StartCoroutine(NothingGrabbed());
+            return;
+        }
+
+        Destroy(gameObject);
+    }
+    private IEnumerator NothingGrabbed()
+    {
+        OnRootNothingGrab?.Invoke();
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }
