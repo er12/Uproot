@@ -99,16 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2bbd0598e03534f968922591a07f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: -2198359758543513925, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  body: {fileID: -6768229247492636757, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  tail: {fileID: -4225591362930417837, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  hole: {fileID: 8298126910812873162, guid: bfbd8b03bad407045979920be13997fc, type: 3}
-  headVertical: {fileID: -6574824623222042629, guid: bfbd8b03bad407045979920be13997fc,
-    type: 3}
-  bodyVertical: {fileID: -9046203508644872386, guid: bfbd8b03bad407045979920be13997fc,
-    type: 3}
-  tailVertical: {fileID: -1944617289660482498, guid: bfbd8b03bad407045979920be13997fc,
-    type: 3}
   isPressed: 0
   animator: {fileID: 0}
   audioSource: {fileID: 0}
