@@ -81,8 +81,6 @@ public class RootIndicatorController : MonoBehaviour
         }
         //yield return new WaitForSeconds(.2f);
         StartCoroutine(NothingGrabbed());
-        yield return new WaitForSeconds(1f);
-        //Destroy(gameObject);
     }
 
     private void Update()
@@ -94,7 +92,6 @@ public class RootIndicatorController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.tag);
         if (other.tag == Constants.GrabableObjects.PlantWarp)
         {
             OnRootPlantWarpGrab?.Invoke();
@@ -119,9 +116,8 @@ public class RootIndicatorController : MonoBehaviour
         animator.Play("Root_HandEmpty_" + sideString);
         audioSource.Play();
 
-        Debug.Log("Root_HandEmpty_" + sideString);
-
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(1f);
+        OnRootNothingGrab?.Invoke();
         Destroy(gameObject);
     }
 

@@ -66,12 +66,17 @@ public class PlayerController : MonoBehaviour
     void OnEnable()
     {
         PlayerWalkingState.PlayerFlipped += Flip;
-        //RootIndicatorController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
+        RootIndicatorController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
+        //RootIndicatorController.OnRootEnemyGrab += PlayerGrabPlantWithRoot;
+        //RootIndicatorController.OnRootItemGrab += PlayerGrabPlantWithRoot;
+        RootIndicatorController.OnRootNothingGrab += PlayerGrabbedNothing;
     }
 
     void OnDisable()
     {
         PlayerWalkingState.PlayerFlipped -= Flip;
+        RootIndicatorController.OnRootPlantWarpGrab -= PlayerGrabPlantWithRoot;
+        RootIndicatorController.OnRootNothingGrab -= PlayerGrabbedNothing;
     }
 
     void Start()
@@ -176,7 +181,21 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerGrabPlantWithRoot()
     {
-        Debug.Log("PlayerGrabPlantWithRoot");
+        Debug.Log("PlayerGrabbedPlantWithRoot");
+        ChangeAnimationState("PlayerGoingUnderground");
+        animator.SetFloat("Horizontal", lastDirection.x);
+        animator.SetFloat("Vertical", lastDirection.y);
+    }
+
+    public void PlayerGrabbedNothing()
+    {
+        TransitionToState(IdleState);
+    }
+
+    //Used by anim
+    public void CreateDust()
+    {
+        var dust = Instantiate(Resources.Load("Prefabs/Dust") as GameObject, transform.position, Quaternion.identity);
     }
 }
 

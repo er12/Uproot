@@ -56,13 +56,8 @@ public class PlayerRootAttackState : PlayerBaseState
         //var rootController = Object.Instantiate(Resources.Load("Prefabs/Root") as GameObject, rootsPosition, Quaternion.identity).GetComponent<RootController>();
 
         //yield return new WaitForSeconds(player.maxRootLengthTime);
-        yield return new WaitForSeconds(1f);
 
 
-        if (!grabbedSomething)
-        {
-            player.TransitionToState(player.IdleState);
 
-        }
     }
 }
