@@ -177,8 +177,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -490,9 +490,9 @@ TextureImporter:
       name: image 1_33
       rect:
         serializedVersion: 2
-        x: 27
+        x: 26
         y: 132
-        width: 31
+        width: 32
         height: 17
       alignment: 9
       pivot: {x: 0.82, y: 0.03}
@@ -511,10 +511,10 @@ TextureImporter:
       name: image 1_34
       rect:
         serializedVersion: 2
-        x: 62
-        y: 120
-        width: 26
-        height: 29
+        x: 61
+        y: 117
+        width: 27
+        height: 32
       alignment: 9
       pivot: {x: 0.7652603, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -534,7 +534,7 @@ TextureImporter:
         serializedVersion: 2
         x: 90
         y: 117
-        width: 15
+        width: 16
         height: 32
       alignment: 9
       pivot: {x: 0.5, y: 0.43}
@@ -784,10 +784,10 @@ TextureImporter:
       name: image 1_63
       rect:
         serializedVersion: 2
-        x: 76
+        x: 75
         y: 68
-        width: 26
-        height: 28
+        width: 28
+        height: 33
       alignment: 9
       pivot: {x: 0.21132073, y: 0.015614918}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -808,7 +808,7 @@ TextureImporter:
         x: 106
         y: 68
         width: 15
-        height: 30
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -868,9 +868,9 @@ TextureImporter:
       name: image 1_69
       rect:
         serializedVersion: 2
-        x: 45
+        x: 43
         y: 68
-        width: 29
+        width: 32
         height: 17
       alignment: 9
       pivot: {x: 0.1585792, y: -0.00000044878792}
@@ -1078,9 +1078,9 @@ TextureImporter:
       name: image 1_85
       rect:
         serializedVersion: 2
-        x: 43
+        x: 42
         y: 4
-        width: 15
+        width: 16
         height: 30
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1099,12 +1099,12 @@ TextureImporter:
       name: image 1_86
       rect:
         serializedVersion: 2
-        x: 62
+        x: 58
         y: 4
-        width: 27
+        width: 31
         height: 28
       alignment: 9
-      pivot: {x: 0.76868606, y: 0}
+      pivot: {x: 0.8442996, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1209,7 +1209,7 @@ TextureImporter:
         width: 31
         height: 16
       alignment: 9
-      pivot: {x: 0.80768853, y: 0}
+      pivot: {x: 0.8442996, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
