@@ -5,12 +5,9 @@ using UnityEngine;
 public class PlayerRootAttackState : PlayerBaseState
 {
     private string animationName = "RootAttack";
-    private string rootRouteString = "Prefabs/Root";
-
-    Vector2 rootsPosition;
-
-
+    private string rootRouteString = "Prefabs/RootIndicator";
     public bool grabbedSomething = false;
+    Vector2 rootsPosition;
 
     public override void EnterState(PlayerController player)
     {
@@ -23,7 +20,7 @@ public class PlayerRootAttackState : PlayerBaseState
         player.Rigidbody.velocity = Vector2.zero;
 
         //TODO: Remove when finished root
-        player.StartCoroutine(doRootAttack(player));
+        player.StartCoroutine(RootAttack(player));
 
     }
 
@@ -39,7 +36,7 @@ public class PlayerRootAttackState : PlayerBaseState
     {
     }
 
-    IEnumerator doRootAttack(PlayerController player)
+    IEnumerator RootAttack(PlayerController player)
     {
         Vector2 playersPosition = player.transform.position;
         Vector2 direction = player.lastDirection.normalized;
@@ -53,9 +50,10 @@ public class PlayerRootAttackState : PlayerBaseState
         rootsPosition = playersPosition + direction;
 
         yield return new WaitForSeconds(.25f);
-        var root = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
-        var rootController = root.GetComponent<RootController>();
-        rootController.Init(player.lastDirection.normalized);
+        var rootIndicator = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
+        var rootIndicatorController = rootIndicator.GetComponent<RootIndicatorController>();
+        rootIndicatorController.Init(player.lastDirection.normalized);
+        //var rootController = Object.Instantiate(Resources.Load("Prefabs/Root") as GameObject, rootsPosition, Quaternion.identity).GetComponent<RootController>();
 
         //yield return new WaitForSeconds(player.maxRootLengthTime);
         yield return new WaitForSeconds(1f);

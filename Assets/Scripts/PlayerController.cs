@@ -5,14 +5,10 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
-    public RootController rootController;
     public float moveSpeed = 16f;
     public float jumpSpeed = 3f;
-
     public float maxHealth = 3f;
-
     public float currentHealth;
-    public float maxRootTicks = 4f;
 
     // State machine
     private PlayerBaseState currentState;
@@ -67,7 +63,7 @@ public class PlayerController : MonoBehaviour
     void OnEnable()
     {
         PlayerWalkingState.PlayerFlipped += Flip;
-        RootController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
+        //RootIndicatorController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
     }
 
     void OnDisable()

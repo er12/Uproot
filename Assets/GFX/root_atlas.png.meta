@@ -1,64 +1,7 @@
 fileFormatVersion: 2
-guid: e65fe0d4ed7f8b24282ccacefa3247eb
+guid: bfbd8b03bad407045979920be13997fc
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -6060317027916945769
-    second: rootsV2_5
-  - first:
-      213: 1178414241163849317
-    second: rootsV2_6
-  - first:
-      213: 8364576365289772110
-    second: rootsV2_7
-  - first:
-      213: -4703922473528879574
-    second: rootsV2_29
-  - first:
-      213: -3740578338386054529
-    second: rootsV2_30
-  - first:
-      213: -6697210965408043203
-    second: rootsV2_31
-  - first:
-      213: -2273361402842607234
-    second: rootsV2_32
-  - first:
-      213: -1749308082471607970
-    second: rootsV2_33
-  - first:
-      213: -587991032478482802
-    second: rootsV2_34
-  - first:
-      213: 4211618161493542690
-    second: rootsV2_35
-  - first:
-      213: 2950484751485822157
-    second: rootsV2_36
-  - first:
-      213: -6582561294396053941
-    second: rootsV2_37
-  - first:
-      213: 5868032672143938010
-    second: rootsV2_38
-  - first:
-      213: 8907165984288735447
-    second: rootsV2_39
-  - first:
-      213: -7156143862071282038
-    second: rootsV2_45
-  - first:
-      213: 8353154790778905141
-    second: rootsV2_46
-  - first:
-      213: 7732289662016382488
-    second: rootsV2_47
-  - first:
-      213: -6634858519325796133
-    second: rootsV2_48
-  - first:
-      213: -6235610483011497517
-    second: rootsV2_49
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -80,6 +23,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -111,9 +55,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -144,34 +91,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rootsV2_5
+      name: root_atlas_0
       rect:
         serializedVersion: 2
-        x: 145
-        y: 183
-        width: 47
-        height: 8
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 79662c4a5cd65eba0800000000000000
-      internalID: -6060317027916945769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rootsV2_6
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 171
+        x: 16
+        y: 96
         width: 16
-        height: 5
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +105,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56e25d242819a5010800000000000000
-      internalID: 1178414241163849317
+      spriteID: e3c34b9c0e45305e0800000000000000
+      internalID: -1944617289660482498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_7
+      name: root_atlas_1
       rect:
         serializedVersion: 2
-        x: 161
-        y: 135
-        width: 14
-        height: 40
+        x: 80
+        y: 96
+        width: 16
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +126,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4499b503e1f41470800000000000000
-      internalID: 8364576365289772110
+      spriteID: f8161f53e37b19f60800000000000000
+      internalID: 8039408287653912975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_29
+      name: root_atlas_3
       rect:
         serializedVersion: 2
         x: 48
-        y: 87
+        y: 80
         width: 16
-        height: 30
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,19 +147,187 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a26955ace6f48beb0800000000000000
-      internalID: -4703922473528879574
+      spriteID: 35fd2962b0fab55c0800000000000000
+      internalID: -4225591362930417837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_30
+      name: root_atlas_4
       rect:
         serializedVersion: 2
-        x: 65
-        y: 87
-        width: 14
+        x: 80
+        y: 80
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bafbac8eb5b6212a0800000000000000
+      internalID: -6768229247492636757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_5
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb6108f627bdd71e0800000000000000
+      internalID: -2198359758543513925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1138651ff9c35070800000000000000
+      internalID: 8094035052727906589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f745576dd657280800000000000000
+      internalID: -9046203508644872386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_13
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac16c14c57ed82370800000000000000
+      internalID: 8298126910812873162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_14
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5491f12575357dc50800000000000000
+      internalID: 6689907405987191109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_15
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa2f3345dcb5da620800000000000000
+      internalID: 2786984681851318954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 440ad146dc4d03cf0800000000000000
+      internalID: -274485598656552892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_17
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 16
         height: 20
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -242,18 +336,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f727af5d1dbc61cc0800000000000000
-      internalID: -3740578338386054529
+      spriteID: 0b3d8fd3bf1a5fc10800000000000000
+      internalID: 2086752102804673456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_31
+      name: root_atlas_18
       rect:
         serializedVersion: 2
-        x: 144
-        y: 87
+        x: 272
+        y: 64
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40697d4595c508e60800000000000000
+      internalID: 7962465679936296452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 64
         width: 16
         height: 22
       alignment: 7
@@ -263,18 +378,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3fa00d3c1abe03a0800000000000000
-      internalID: -6697210965408043203
+      spriteID: f50244a56cf393ba0800000000000000
+      internalID: -6108781298400878497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_32
+      name: root_atlas_20
       rect:
         serializedVersion: 2
-        x: 160
-        y: 87
+        x: 304
+        y: 64
         width: 16
         height: 31
       alignment: 7
@@ -284,18 +399,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e719b7159d56370e0800000000000000
-      internalID: -2273361402842607234
+      spriteID: 0581016f06850fbd0800000000000000
+      internalID: -2598479811524421552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_33
+      name: root_atlas_21
       rect:
         serializedVersion: 2
-        x: 176
-        y: 87
+        x: 320
+        y: 64
         width: 16
         height: 17
       alignment: 7
@@ -305,102 +420,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e516f85319539b7e0800000000000000
-      internalID: -1749308082471607970
+      spriteID: 1057acd99391b3c70800000000000000
+      internalID: 8951776419580114177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_34
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 103
-        width: 16
-        height: 7
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8e3102754907d7f0800000000000000
-      internalID: -587991032478482802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rootsV2_35
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 103
-        width: 16
-        height: 7
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 227086d576ca27a30800000000000000
-      internalID: 4211618161493542690
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rootsV2_36
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 87
-        width: 16
-        height: 7
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc4e487cf3a32f820800000000000000
-      internalID: 2950484751485822157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rootsV2_37
+      name: root_atlas_22
       rect:
         serializedVersion: 2
         x: 16
-        y: 87
-        width: 16
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b46a94fe06b06a4a0800000000000000
-      internalID: -6582561294396053941
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rootsV2_38
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 87
+        y: 32
         width: 16
         height: 16
       alignment: 7
@@ -410,18 +441,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad1968900a07f6150800000000000000
-      internalID: 5868032672143938010
+      spriteID: bffcb5017d781c4a0800000000000000
+      internalID: -6574824623222042629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_39
+      name: root_atlas_23
       rect:
         serializedVersion: 2
-        x: 128
-        y: 87
+        x: 176
+        y: 32
         width: 16
         height: 16
       alignment: 7
@@ -431,40 +462,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d009f0454c9c9b70800000000000000
-      internalID: 8907165984288735447
+      spriteID: 2848d85411db949a0800000000000000
+      internalID: -6248255126120856446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_45
+      name: root_atlas_24
       rect:
         serializedVersion: 2
-        x: 262
-        y: 78
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8636a3821540bc90800000000000000
-      internalID: -7156143862071282038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rootsV2_46
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 39
-        width: 14
+        x: 192
+        y: 32
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -473,19 +483,61 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 532aa3a760e5ce370800000000000000
-      internalID: 8353154790778905141
+      spriteID: 352ba6fec6ae28430800000000000000
+      internalID: 3783844390538752595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_47
+      name: root_atlas_28
       rect:
         serializedVersion: 2
-        x: 145
-        y: 39
-        width: 14
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3713279d881d2f00800000000000000
+      internalID: 1093557280926013245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_29
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 16
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfcea0679fb451270800000000000000
+      internalID: 8220560229634075899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_30
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 16
+        width: 16
         height: 22
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -494,20 +546,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81669ecea7c9e4b60800000000000000
-      internalID: 7732289662016382488
+      spriteID: ab2ae4df72cb1d110800000000000000
+      internalID: 1284014248716837562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_48
+      name: root_atlas_31
       rect:
         serializedVersion: 2
-        x: 161
-        y: 39
-        width: 14
-        height: 31
+        x: 304
+        y: 16
+        width: 16
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -515,19 +567,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd89c94645f3ce3a0800000000000000
-      internalID: -6634858519325796133
+      spriteID: 5ee56d101c2a6e730800000000000000
+      internalID: 4028085866572701413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rootsV2_49
+      name: root_atlas_32
       rect:
         serializedVersion: 2
-        x: 177
-        y: 39
-        width: 14
+        x: 320
+        y: 16
+        width: 16
         height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -536,8 +588,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d1d56aad49a679a0800000000000000
-      internalID: -6235610483011497517
+      spriteID: 593ad5606dfedab90800000000000000
+      internalID: -7228858124350938219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: root_atlas_33
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af91e23703bea20c0800000000000000
+      internalID: -4599605476082181638
       vertices: []
       indices: 
       edges: []

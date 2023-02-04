@@ -1,73 +1,68 @@
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
-using Constants;
 
 public class RootController : MonoBehaviour
 {
-    Vector2 direction = new Vector2(0f, 1f);
-    Rigidbody2D rb;
-    private float moveSpeed = 0.15f;
-    public bool isPressed = false;
-
-    PlayerController player;
-    CapsuleCollider2D collider;
-
     public static event Action OnRootPlantWarpGrab;
     public static event Action OnRootEnemyGrab;
     public static event Action OnRootItemGrab;
     public static event Action OnRootNothingGrab;
 
+    private float moveSpeed = 0.15f;
+    private float speed = 1;
+    public int ticks = 0;
 
-    private void Awake()
+    private SpriteRenderer spriteRenderer;
+
+    public void SetSprite(Sprite sprite)
     {
-        collider = gameObject.GetComponent<CapsuleCollider2D>();
-        player = GameObject.FindObjectOfType<PlayerController>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        spriteRenderer.sprite = sprite;
     }
 
-    public void Init(Vector2 direction)
+    private void Awake()
+	{
+        RootIndicatorController.OnSelect += OnSelect;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+	}
+
+	private void OnDestroy()
+	{
+		RootIndicatorController.OnSelect -= OnSelect;
+	}
+
+	void OnSelect(int ticks)
     {
-        this.direction = direction;
-        isPressed = true;
+        this.ticks = ticks;
+        //Debug.Log("INSTANTIATING ROOT");
         StartCoroutine(Move());
+    }
+
+	void Start()
+    {
+    }
+
+    void Update()
+    {
+
     }
 
     private IEnumerator Move()
     {
-        for (var i = 0; i < player.maxRootTicks; i++)
+        var player = FindObjectOfType<PlayerController>();
+
+        Vector2 direction = player.lastDirection.normalized;
+
+        /*for (var i = 0; i < ticks; i++)
         {
-            yield return null;
-            if (!isPressed)
-            {
-                collider.enabled = true;
-                yield break;
-            }
             yield return new WaitForSeconds(moveSpeed);
-            transform.position += (Vector3)direction;
-        }
+            transform.position += (Vector3)direction * speed;
+        }*/
+        //OnSelect?.Invoke();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
-    private IEnumerator NothingGrabbed()
-    {
-        OnRootNothingGrab?.Invoke();
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
-    }
-
-    private void Update()
-    {
-        if (!Input.GetButton("Root"))
-        {
-            isPressed = false;
-        }
-        if (Input.GetButtonUp("Root"))
-        {
-            isPressed = false;
-        }
-    }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -91,8 +86,11 @@ public class RootController : MonoBehaviour
         }
 
         Destroy(gameObject);
-
     }
-
-
+    private IEnumerator NothingGrabbed()
+    {
+        OnRootNothingGrab?.Invoke();
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
 }
