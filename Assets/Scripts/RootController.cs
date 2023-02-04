@@ -31,7 +31,7 @@ public class RootController : MonoBehaviour
 
     void OnNothingGrabbed()
     {
-        StartCoroutine(RetractRoot());
+       // StartCoroutine(RetractRoot());
     }
 
     void Start()
