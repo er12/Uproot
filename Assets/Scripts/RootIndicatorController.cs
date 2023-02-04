@@ -34,8 +34,6 @@ public class RootIndicatorController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip handOutOfGround;
     public AudioClip groundPierce;
-    public float volume = 0.5f;
-
 
     public void Init(Vector2 direction)
     {
@@ -47,10 +45,12 @@ public class RootIndicatorController : MonoBehaviour
         StartCoroutine(Move());
     }
 
-    private void Start() {
+    private void Start()
+    {
         animator = gameObject.GetComponent<Animator>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+
         audioSource.clip = groundPierce;
         audioSource.Play();
     }
@@ -110,13 +110,14 @@ public class RootIndicatorController : MonoBehaviour
     private IEnumerator NothingGrabbed()
     {
         spriteRenderer.enabled = true;
+        fixSprite();
         //OnRootNothingGrab?.Invoke();
         string sideString = direction.x == 0 ? "Up" : "Side";
 
         audioSource.clip = handOutOfGround;
         animator.Play("Root_HandEmpty_" + sideString);
         audioSource.Play();
-        
+
         Debug.Log("Root_HandEmpty_" + sideString);
 
         yield return new WaitForSeconds(1.1f);
@@ -127,7 +128,17 @@ public class RootIndicatorController : MonoBehaviour
     {
         audioSource.Pause();
         spriteRenderer.enabled = false;
+        spriteRenderer.transform.position -= (Vector3)new Vector2(0, direction.y); // to move pivot back
 
+    }
 
+    //for Down and Left
+    void fixSprite()
+    {
+        spriteRenderer.flipX = (direction == new Vector2(1f, 0f));
+        if (direction == new Vector2(0f, -1f))
+        {
+            spriteRenderer.transform.position += (Vector3)new Vector2(0, direction.y); // to move pivot
+        }
     }
 }

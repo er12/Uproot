@@ -15,6 +15,8 @@ public class PlayerAttackingState : PlayerBaseState
 
         player.Rigidbody.velocity = Vector2.zero;
 
+        player.audioSource.clip = player.swordAudio;
+        player.audioSource.Play();
     }
 
     public override void Update(PlayerController player)

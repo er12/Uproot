@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     // For animations
     private string currentAnimaton;
 
+    public AudioSource audioSource;
+    public AudioClip swordAudio;
+
     private Rigidbody2D rb;
     public Rigidbody2D Rigidbody
     {
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         // Status Bar
         currentHealth = maxHealth;
