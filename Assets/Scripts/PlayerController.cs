@@ -168,7 +168,6 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeAnimationState(string newAnimation)
     {
-
         if (currentAnimaton == newAnimation) return;
 
         animator.Play(newAnimation);
@@ -177,9 +176,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerGrabPlantWithRoot()
     {
-
         Debug.Log("PlayerGrabPlantWithRoot");
-
     }
 }
 

@@ -8328,6 +8328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1212536918}
   - component: {fileID: 1212536920}
+  - component: {fileID: 1212536921}
   - component: {fileID: 1212536919}
   m_Layer: 0
   m_Name: Turtle
@@ -8360,7 +8361,7 @@ Animator:
   m_GameObject: {fileID: 1212536917}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 425241fbcfe0663438686b205cdaa4a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: d4b9021aa1f36314bb0de6f46284b051, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8408,8 +8409,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -5091132638164579347, guid: ab04e550da4e4384495b135078e07934, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -2668059363940460912, guid: 822c41078147b674182b6b0f3c95013c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8420,6 +8421,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1212536921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212536917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e27864a91f3047419febdacddbe3595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  isEnemyFacingRight: 1
 --- !u!1 &1248991593
 GameObject:
   m_ObjectHideFlags: 0
