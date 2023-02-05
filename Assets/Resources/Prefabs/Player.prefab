@@ -51,7 +51,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -76,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -5828357098015160444, guid: 4f9d6f8db403f324980d5e448c1a7a72, type: 3}
+  m_Sprite: {fileID: -5828357098015160444, guid: 4f9d6f8db403f324980d5e448c1a7a72,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,13 +103,16 @@ MonoBehaviour:
   jumpSpeed: 3
   maxHealth: 3
   currentHealth: 0
+  audioSource: {fileID: 0}
+  swordAudio: {fileID: 0}
   isAttacking: 0
   isPlayerFacingRight: 1
   respawnPoint: {x: 0, y: 0}
   animator: {fileID: 0}
-  sprite: {fileID: 0}
-  AttackCheck: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  collider2D: {fileID: 0}
   lastDirection: {x: 0, y: -1}
+  lastPlantPosition: {x: 0, y: -1}
   lastAttackedFrom: {fileID: 0}
 --- !u!50 &1649649722059633297
 Rigidbody2D:
