@@ -7,10 +7,12 @@ public class DialogueHelper : MonoBehaviour
 	public Text label;
 	public Image frame;
 	public GameObject cursor;
+	public GameObject dimmer;
 	public static DialogueHelper instance;
 	public bool active = false;
 	public bool forceEnd = false;
 	public bool permanent = false;
+	public float speed = 0.01f;
 
 	private void Awake()
 	{
@@ -25,12 +27,14 @@ public class DialogueHelper : MonoBehaviour
 
 	public IEnumerator ShowText(string content)
 	{
+		dimmer.SetActive(true);
+		forceEnd = false;
 		frame.color = new Color32(0, 0, 0, 233);
 		label.text = "";
 		for (int i = 0; i < content.Length; i++)
 		{
 			label.text += content[i];
-			yield return new WaitForSeconds(0.01f);
+			yield return new WaitForSeconds(speed);
 			if (forceEnd)
 			{
 				label.text = content;
@@ -86,5 +90,41 @@ public class DialogueHelper : MonoBehaviour
 		frame.color = new Color32(0, 0, 0, 0);
 		label.text = "";
 		active = false;
+	}
+
+	Coroutine previous = null;
+	public IEnumerator DisplayText(string content, GameObject portrait, float speed)
+	{
+		this.speed = speed;
+		if (portrait) portrait.SetActive(true);
+		if (previous != null)
+		{
+			StopCoroutine(previous);
+		}
+		//NPC.GetComponent<Animator>().Play("Talking");
+		active = true;
+		previous = StartCoroutine(ShowText(content));
+
+		/*int soundId = 4;
+        if (Random.Range(0, 2) == 1)
+        {
+            soundId = 3;
+        }
+        if (content.Contains("?"))
+        {
+            soundId = 1;
+            if (Random.Range(0, 2) == 1)
+                soundId = 2;
+        }
+        string talkingSound = "Talk" + soundId;
+        GameManager.instance.StartCoroutine(GameManager.instance.PlaySound(talkingSound, 0f, 1f));
+        LOLSDK.Instance.SpeakText(content);*/
+
+		while (active)
+		{
+			yield return new WaitForSeconds(0.1f);
+		}
+		dimmer.SetActive(false);
+		if (portrait) portrait.SetActive(false);
 	}
 }
