@@ -14,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - EverythingElse
+  - 
   - 
   - 
   - 
@@ -47,15 +47,6 @@ TagManager:
   - name: Background
     uniqueID: 2879140773
     locked: 0
-  - name: EnemiesAndNPCs
-    uniqueID: 1850863493
-    locked: 0
-  - name: Root
-    uniqueID: 1259066363
-    locked: 0
   - name: Foreground
     uniqueID: 2347728887
-    locked: 0
-  - name: Player
-    uniqueID: 1657245829
     locked: 0
