@@ -241,7 +241,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 0cffeccb3c167c04a936099c43445b5e, type: 2}
+    m_Motion: {fileID: 7400000, guid: 756a8552dc312274ba0809faf648656b, type: 2}
     m_Threshold: 1
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -254,7 +254,7 @@ BlendTree:
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
-  m_BlendType: 1
+  m_BlendType: 2
 --- !u!1102 &-5013414721761556409
 AnimatorState:
   serializedVersion: 6
@@ -359,10 +359,10 @@ AnimatorStateMachine:
     m_Position: {x: 410, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3544152078571457012}
-    m_Position: {x: 470, y: 450, z: 0}
+    m_Position: {x: 310, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5016559299862694327}
-    m_Position: {x: 520, y: 510, z: 0}
+    m_Position: {x: 560, y: 590, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3748384207864116182}
     m_Position: {x: 450, y: 390, z: 0}
@@ -389,7 +389,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_GoingUnderground
+  m_Name: GoingUnderground
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -771,7 +771,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 1ac06cdba2ee472428f8da553cff3638, type: 2}
+    m_Motion: {fileID: 7400000, guid: ef390c9515bf2fe4e98b47917c261c54, type: 2}
     m_Threshold: 1
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1

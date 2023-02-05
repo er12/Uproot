@@ -183,11 +183,12 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerGrabPlantWithRoot(Vector2 plantPosition)
     {
-        ChangeAnimationState("Player_GoingUnderground_Right");
+        ChangeAnimationState("GoingUnderground");
 
         collider2D.enabled = false;
         spriteRenderer.sortingOrder = 1;
 
+        animator.SetFloat("Horizontal", 0);
         animator.SetFloat("Horizontal", lastDirection.normalized.x);
         animator.SetFloat("Vertical", lastDirection.normalized.y);
 
