@@ -23,7 +23,7 @@ public class RootController : MonoBehaviour
     private int maxTicks = 15;
     public bool isPressed = false;
 
-    public static event Action <Vector2>OnRootPlantWarpGrab;
+    public static event Action<Vector2> OnRootPlantWarpGrab;
     public static event Action OnRootEnemyGrab;
     public static event Action OnRootItemGrab;
     public static event Action OnRootNothingGrab;
@@ -94,6 +94,15 @@ public class RootController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Foreground")
+        {
+            spriteRenderer.color = new Color(
+                spriteRenderer.color.r,
+                spriteRenderer.color.g,
+                spriteRenderer.color.b,
+               0.50f);
+            return;
+        }
         if (other.tag == Constants.GrabableObjects.PlantWarp)
         {
             animator.enabled = false;
@@ -101,7 +110,7 @@ public class RootController : MonoBehaviour
             plant.AnimateGrabbedByRoot(transform.position);
 
             //For playerContorller\
-            
+
             OnRootPlantWarpGrab?.Invoke(other.transform.position);
             GetComponentInChildren<GroundParticles>().Detach();
 
@@ -115,6 +124,19 @@ public class RootController : MonoBehaviour
         else if (other.tag == Constants.GrabableObjects.Item)
         {
             OnRootItemGrab?.Invoke();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Foreground")
+        {
+            spriteRenderer.color = new Color(
+                spriteRenderer.color.r,
+                spriteRenderer.color.g,
+                spriteRenderer.color.b,
+               1f);
+            return;
         }
     }
 
