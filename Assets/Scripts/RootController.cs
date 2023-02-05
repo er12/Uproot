@@ -24,7 +24,6 @@ public class RootController : MonoBehaviour
     public bool isPressed = false;
 
     public static event Action <Vector2, float>OnRootPlantWarpGrab;
-    public static event Action OnRootEnemyGrab;
     public static event Action OnRootItemGrab;
     public static event Action OnRootNothingGrab;
 
@@ -109,7 +108,7 @@ public class RootController : MonoBehaviour
             PlantWarpController plant = other.gameObject.GetComponent<PlantWarpController>();
             plant.AnimateGrabbedByRoot(transform.position);
 
-            //For playerContorller\
+            //For playerContorller
             
             OnRootPlantWarpGrab?.Invoke(other.transform.position, plant.sproutForce);
             GetComponentInChildren<GroundParticles>().Detach();
@@ -118,7 +117,10 @@ public class RootController : MonoBehaviour
         }
         else if (other.tag == Constants.GrabableObjects.Enemy)
         {
-            OnRootEnemyGrab?.Invoke();
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            enemy.AnimateGrabbedByRoot();
+            GetComponentInChildren<GroundParticles>().Detach();
+            Destroy(gameObject);
         }
         else if (other.tag == Constants.GrabableObjects.Item)
         {

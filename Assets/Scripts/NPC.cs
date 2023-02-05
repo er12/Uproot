@@ -42,7 +42,9 @@ public class NPC : MonoBehaviour
 		var player = FindObjectOfType<PlayerController>();
 		var originalSprite = GetComponent<SpriteRenderer>().sprite;
 
-		var horizontalDistance = Mathf.Abs(player.transform.position.x - transform.position.x);
+        player.TransitionToState(player.TalkingState);
+
+        var horizontalDistance = Mathf.Abs(player.transform.position.x - transform.position.x);
 		var verticalDistance = Mathf.Abs(player.transform.position.y - transform.position.y);
 		if (horizontalDistance > verticalDistance)
 		{
@@ -76,11 +78,13 @@ public class NPC : MonoBehaviour
 		coroutine = null;
 		transform.localScale = new Vector3(1, 1, 1);
 		GetComponent<SpriteRenderer>().sprite = originalSprite;
-	}
+        player.TransitionToState(player.IdleState);
+
+    }
 
 	private void Update()
 	{
-		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)))
+		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Return)))
 		{
 			if (canTalk && coroutine == null)
 			{

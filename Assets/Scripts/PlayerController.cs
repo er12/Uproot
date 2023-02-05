@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 16f;
     public float jumpSpeed = 3f;
-    public float maxHealth = 3f;
+    public float maxHealth = 4f;
     public float currentHealth;
 
     // State machine
@@ -21,11 +21,12 @@ public class PlayerController : MonoBehaviour
     public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
     public readonly PlayerRootAttackState RootAttackState = new PlayerRootAttackState();
     public readonly PlayerDodgingState DodgingState = new PlayerDodgingState();
+    public readonly PlayerTalkingState TalkingState = new PlayerTalkingState();
 
-    //TODO: Hurt
-    // public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
-    // TODO: DEAD
-    // public readonly PlayerAttackingState AttackingState = new PlayerAttackingState();
+    public readonly PlayerTakingDamageState TakingDamageState = new PlayerTakingDamageState();
+
+
+    public readonly PlayerDeadState DeadState = new PlayerDeadState();
 
     // For animations
     private string currentAnimaton;
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
         particleSystem.Stop(includeChildren, ParticleSystemStopBehavior.StopEmitting);
         PlayerWalkingState.PlayerFlipped += Flip;
         RootController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
-        //RootController.OnRootEnemyGrab += PlayerGrabPlantWithRoot;
+        EnemyController.OnRootFinishedEnemyGrab += TransitionToIdle;
         //RootController.OnRootItemGrab += PlayerGrabPlantWithRoot;
         RootController.OnRootNothingGrab += TransitionToIdle;
     }
@@ -157,14 +158,14 @@ public class PlayerController : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    // public void takeDamage(EnemyController enemy)
-    // {
-    //     if (currentState == TakingDamageState || currentState == DisabledState)
-    //         return;
-    //     lastAttackedFrom = enemy;
-    //     TransitionToState(TakingDamageState);
-    // }
-
+    public void TakeDamage(EnemyController enemy)
+    {
+        if (currentState == TakingDamageState || currentState == TalkingState)
+            return;
+        lastAttackedFrom = enemy;
+        currentHealth -= 1;
+        TransitionToState(TakingDamageState);
+    }
 
     // public void die()
     // {
@@ -255,6 +256,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
 }
 
 

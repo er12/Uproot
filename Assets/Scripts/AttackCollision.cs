@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class AttackCollision : MonoBehaviour
 {
-	public PlayerController player;
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject == player.gameObject) return;
-
-		if (player.isAttacking)
+		if (collision.tag == "Enemy")
 		{
 			Debug.Log("HIT: " + collision.name);
 		}

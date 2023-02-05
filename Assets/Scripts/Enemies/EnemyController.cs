@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public float health = 5f;
     public float moveSpeed = 1f;
     public Vector2 currentTile = Vector2.zero;
     public Vector2 destinationTile = Vector2.zero;
@@ -30,8 +31,12 @@ public class EnemyController : MonoBehaviour
     public bool isEnemyFacingRight = true;  // For determining which way the enemy is currently facing.
 
     public readonly EnemyRoamingState RoamingState = new EnemyRoamingState();
+    public readonly EnemyFlippedState FlippedState = new EnemyFlippedState();
 
     public SpriteRenderer spriteRenderer;
+    PlayerController player;
+
+    public static event System.Action OnRootFinishedEnemyGrab;
 
 
     private void Awake()
@@ -42,6 +47,8 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+
+        player = FindObjectOfType<PlayerController>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -108,6 +115,68 @@ public class EnemyController : MonoBehaviour
         Debug.Log("gotHitByRoot");
 
         // StartFlipping animation
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            player.TakeDamage(this);
+        }
+    }
+
+    public void AnimateGrabbedByRoot()
+    {
+        if (gameObject.name.StartsWith("Turtle"))
+        {
+            animator.Play("FlippedByRoot");
+            animator.SetFloat("Horizontal", rb.velocity.x);
+            animator.SetFloat("Vertical", rb.velocity.y);
+        }
+    }
+
+    public void finshedTilting()
+    {
+        OnRootFinishedEnemyGrab?.Invoke();
+        TransitionToState(FlippedState);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.name == "AttackCheck")
+        {
+            if (currentState == FlippedState)
+            {
+                TakeDamage();
+            }
+            else{
+                player.TransitionToState(player.TakingDamageState);
+            }
+        }
+        
+    }
+
+
+    public void TakeDamage()
+    {
+        //TODO: 
+         animator.Play("Damage");
+        if (health <= 1)
+        {
+            StartCoroutine(die());
+        }
+        else
+        {
+            health--;
+        }
+
+    }
+    IEnumerator die()
+    {
+        {
+            yield return new WaitForSeconds(0.3f);
+            Destroy(gameObject);
+        }
     }
 
 }

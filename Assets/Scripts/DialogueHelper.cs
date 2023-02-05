@@ -68,7 +68,7 @@ public class DialogueHelper : MonoBehaviour
 	private void Update()
 	{
 		if (permanent) return;
-		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)))
+		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Return)))
 		{
 			if (cursor.activeInHierarchy)
 			{
