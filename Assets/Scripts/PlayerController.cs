@@ -197,8 +197,10 @@ public class PlayerController : MonoBehaviour
         currentAnimaton = newAnimation;
     }
 
-    public void PlayerGrabPlantWithRoot(Vector2 plantPosition)
+    public void PlayerGrabPlantWithRoot(Vector2 plantPosition, float sproutForce)
     {
+        jumpForce = sproutForce;
+
         ChangeAnimationState("GoingUnderground");
         particleSystem.Play(true);
 
@@ -227,6 +229,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(goToPlant());
     }
 
+    private float jumpForce = 0f;
     IEnumerator goToPlant()
     {
         float lerpTime = 2.5f;
@@ -245,7 +248,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat("Horizontal", lastDirection.x);
                 animator.SetFloat("Vertical", lastDirection.y);
                 particleSystem.Stop(includeChildren, ParticleSystemStopBehavior.StopEmitting);
-
+                rb.AddForce(lastDirection * jumpForce);
                 break;
             }
             yield return null;
