@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
-    public SpriteRenderer sprite;
+    public SpriteRenderer spriteRenderer;
 
     public BoxCollider2D AttackCheck;
 
@@ -61,22 +61,24 @@ public class PlayerController : MonoBehaviour
 
     // Records of events
     public Vector2 lastDirection = new Vector2(0f, -1f);
+    public Vector2 lastPlantPosition = new Vector2(0f, -1f);
+
     public EnemyController lastAttackedFrom;
 
     void OnEnable()
     {
         PlayerWalkingState.PlayerFlipped += Flip;
-        RootIndicatorController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
-        //RootIndicatorController.OnRootEnemyGrab += PlayerGrabPlantWithRoot;
-        //RootIndicatorController.OnRootItemGrab += PlayerGrabPlantWithRoot;
-        RootIndicatorController.OnRootNothingGrab += PlayerGrabbedNothing;
+        RootController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
+        //RootController.OnRootEnemyGrab += PlayerGrabPlantWithRoot;
+        //RootController.OnRootItemGrab += PlayerGrabPlantWithRoot;
+        RootController.OnRootNothingGrab += TransitionToIdle;
     }
 
     void OnDisable()
     {
         PlayerWalkingState.PlayerFlipped -= Flip;
-        RootIndicatorController.OnRootPlantWarpGrab -= PlayerGrabPlantWithRoot;
-        RootIndicatorController.OnRootNothingGrab -= PlayerGrabbedNothing;
+        RootController.OnRootPlantWarpGrab -= PlayerGrabPlantWithRoot;
+        RootController.OnRootNothingGrab -= TransitionToIdle;
     }
 
     void Start()
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren(typeof(Animator)) as Animator;
 
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
         // Status Bar
@@ -179,15 +181,19 @@ public class PlayerController : MonoBehaviour
         currentAnimaton = newAnimation;
     }
 
-    public void PlayerGrabPlantWithRoot()
+    public void PlayerGrabPlantWithRoot(Vector2 plantPosition)
     {
-        Debug.Log("PlayerGrabbedPlantWithRoot");
-        ChangeAnimationState("PlayerGoingUnderground");
+        ChangeAnimationState("Player_GoingUnderground");
+        
+        Debug.Log(lastDirection);
+        
         animator.SetFloat("Horizontal", lastDirection.x);
         animator.SetFloat("Vertical", lastDirection.y);
+
+        lastPlantPosition = plantPosition;
     }
 
-    public void PlayerGrabbedNothing()
+    public void TransitionToIdle()
     {
         TransitionToState(IdleState);
     }
@@ -196,6 +202,37 @@ public class PlayerController : MonoBehaviour
     public void CreateDust()
     {
         var dust = Instantiate(Resources.Load("Prefabs/Dust") as GameObject, transform.position, Quaternion.identity);
+        ChangeAnimationState("Player_CrawlingUnderground");
+        StartCoroutine(goToPlant());
+        
+    }
+
+    IEnumerator goToPlant()
+    {
+
+        float lerpTime = 2.5f;
+        float t = 0f;
+
+        while ((Vector2)transform.position != lastPlantPosition)
+        {
+
+            transform.position = Vector3.Lerp(transform.position, lastPlantPosition, lerpTime * Time.deltaTime);
+
+            t = Mathf.Lerp(t, 1f, lerpTime * Time.deltaTime);
+
+            if (t > 0.9f)
+            {
+
+                ChangeAnimationState("Player_PoppingOut");
+                animator.SetFloat("Horizontal", lastDirection.x);
+                animator.SetFloat("Vertical", lastDirection.y);
+
+                break;
+            }
+
+            yield return null;
+        }
+
     }
 }
 
