@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRoamingState : EnemyBaseState
+public class EnemyRoamingState : MonoBehaviour//EnemyBaseState
 {
-    static int N = 3, M = 3;
+    /*static int N = 3, M = 3;
     int[,] movementGrid = new int[N, M];
     Vector2 inGridPosition = new Vector2(1, 1);
     Vector2 direction = new Vector2(0, -1); //looking down
@@ -66,7 +66,7 @@ public class EnemyRoamingState : EnemyBaseState
     {
         int newN = n - 1;
         return newN < 0 ? n : newN;
-    }
+    }*/
 }
 
 

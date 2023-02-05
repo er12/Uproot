@@ -1,37 +1,34 @@
 fileFormatVersion: 2
-guid: 822c41078147b674182b6b0f3c95013c
+guid: f599f5aee4999cf45bea12f788c0b2fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2668059363940460912
-    second: turtle 1_2
+      213: 8059846713371231154
+    second: tiburoncin_0
   - first:
-      213: -178373424358738626
-    second: turtle 1_3
+      213: 6416269861707480441
+    second: tiburoncin_1
   - first:
-      213: 65391291862832605
-    second: turtle 1_4
+      213: 5728201803640978390
+    second: tiburoncin_2
   - first:
-      213: -6803879660876498056
-    second: turtle 1_5
+      213: -1584804425778290706
+    second: tiburoncin_3
   - first:
-      213: 1795841402891500240
-    second: turtle 1_6
+      213: -8877560539806609216
+    second: tiburoncin_4
   - first:
-      213: -7152883808279115078
-    second: turtle 1_7
+      213: -1445924156254288944
+    second: tiburoncin_5
   - first:
-      213: -9171649343434980292
-    second: turtle 1_9
+      213: -2441622282147736191
+    second: tiburoncin_6
   - first:
-      213: -5953052722762769372
-    second: turtle 1_11
+      213: -6010834213875594678
+    second: tiburoncin_7
   - first:
-      213: 5196876225420223175
-    second: turtle 1_13
-  - first:
-      213: -1025556333633996943
-    second: turtle 1_14
+      213: -6280401597059686483
+    second: tiburoncin_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,17 +110,41 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turtle 1_2
+      name: tiburoncin_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 49
+        x: 0
+        y: 112
         width: 16
-        height: 16
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,197 +152,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0969cacf42629fad0800000000000000
-      internalID: -2668059363940460912
+      spriteID: 2b3879602e35adf60800000000000000
+      internalID: 8059846713371231154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle 1_3
+      name: tiburoncin_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 49
+        x: 121
+        y: 0
+        width: 39
+        height: 66
+      alignment: 9
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97d7e12c17b2b0950800000000000000
+      internalID: 6416269861707480441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiburoncin_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
         width: 16
-        height: 16
+        height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e353abbc05a468df0800000000000000
-      internalID: -178373424358738626
+      spriteID: 6dbb5cbe039ae7f40800000000000000
+      internalID: 5728201803640978390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle 1_4
+      name: tiburoncin_3
       rect:
         serializedVersion: 2
-        x: 33
-        y: 49
+        x: 32
+        y: 112
         width: 16
-        height: 16
+        height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd553e2980158e000800000000000000
-      internalID: 65391291862832605
+      spriteID: eef940b75c4a10ae0800000000000000
+      internalID: -1584804425778290706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle 1_5
+      name: tiburoncin_4
       rect:
         serializedVersion: 2
-        x: 49
-        y: 49
+        x: 48
+        y: 112
         width: 16
-        height: 16
+        height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87b73f63f73c391a0800000000000000
-      internalID: -6803879660876498056
+      spriteID: 0c05dc079b19cc480800000000000000
+      internalID: -8877560539806609216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle 1_6
+      name: tiburoncin_5
       rect:
         serializedVersion: 2
-        x: 1
-        y: 33
+        x: 64
+        y: 112
         width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0da794cbd3c1ce810800000000000000
-      internalID: 1795841402891500240
+      spriteID: 0d38e4604ab0febe0800000000000000
+      internalID: -1445924156254288944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle 1_7
+      name: tiburoncin_6
       rect:
         serializedVersion: 2
-        x: 33
-        y: 33
+        x: 80
+        y: 112
         width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aba41efe21adbbc90800000000000000
-      internalID: -7152883808279115078
+      spriteID: 185d7ec787d9d1ed0800000000000000
+      internalID: -2441622282147736191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle 1_9
+      name: tiburoncin_7
       rect:
         serializedVersion: 2
-        x: 1
-        y: 18
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 30
+        y: 0
+        width: 50
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c340d100481c7b080800000000000000
-      internalID: -9171649343434980292
+      spriteID: a4a4e26112a359ca0800000000000000
+      internalID: -6010834213875594678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turtle 1_11
+      name: tiburoncin_8
       rect:
         serializedVersion: 2
-        x: 33
-        y: 17
+        x: 96
+        y: 103
         width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42c9d8ad612826da0800000000000000
-      internalID: -5953052722762769372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: turtle 1_13
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 2
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c268dd84630f1840800000000000000
-      internalID: 5196876225420223175
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: turtle 1_14
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 1
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 177f79cb2fd74c1f0800000000000000
-      internalID: -1025556333633996943
+      spriteID: daf1670c50887d8a0800000000000000
+      internalID: -6280401597059686483
       vertices: []
       indices: 
       edges: []
