@@ -8,7 +8,7 @@ public class PlantWarpController : MonoBehaviour
     private int counter = 0;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-
+    public float sproutForce = 40f;
 
     private void OnEnable()
     {
@@ -21,6 +21,7 @@ public class PlantWarpController : MonoBehaviour
         //RootController.OnRootPlantWarpGrab -= AnimateGrabbedByRoot;
 
     }
+
     void Start()
     {
         waypointsLength = wayPoints.Length;
@@ -28,7 +29,6 @@ public class PlantWarpController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

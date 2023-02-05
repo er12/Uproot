@@ -23,7 +23,7 @@ public class RootController : MonoBehaviour
     private int maxTicks = 15;
     public bool isPressed = false;
 
-    public static event Action<Vector2> OnRootPlantWarpGrab;
+    public static event Action <Vector2, float>OnRootPlantWarpGrab;
     public static event Action OnRootEnemyGrab;
     public static event Action OnRootItemGrab;
     public static event Action OnRootNothingGrab;
@@ -110,11 +110,10 @@ public class RootController : MonoBehaviour
             plant.AnimateGrabbedByRoot(transform.position);
 
             //For playerContorller\
-
-            OnRootPlantWarpGrab?.Invoke(other.transform.position);
+            
+            OnRootPlantWarpGrab?.Invoke(other.transform.position, plant.sproutForce);
             GetComponentInChildren<GroundParticles>().Detach();
 
-            //Invoke("End", 2f);
             Destroy(gameObject);
         }
         else if (other.tag == Constants.GrabableObjects.Enemy)
@@ -138,11 +137,6 @@ public class RootController : MonoBehaviour
                1f);
             return;
         }
-    }
-
-    public void End()
-    {
-        Destroy(gameObject);
     }
 
     private IEnumerator NothingGrabbed()
