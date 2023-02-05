@@ -217,7 +217,9 @@ public class PlayerController : MonoBehaviour
 
     public void TransitionToIdle()
     {
+        Debug.Log("IdleState");
         TransitionToState(IdleState);
+        
         collider2D.enabled = true;
         //spriteRenderer.sortingOrder = 4;
     }

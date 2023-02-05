@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
 
     public static event System.Action OnRootFinishedEnemyGrab;
 
+    public bool tilted = false;
 
     private void Awake()
     {
@@ -117,11 +118,18 @@ public class EnemyController : MonoBehaviour
         // StartFlipping animation
     }
 
+    void BackToFlippedAnim()
+    {
+        if(currentState == FlippedState)
+            animator.Play("Turtle_OnItsBack");
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.tag == "Player")
         {
+            player.lastAttackedFrom = this;
             player.TakeDamage(this);
         }
     }
@@ -130,37 +138,56 @@ public class EnemyController : MonoBehaviour
     {
         if (gameObject.name.StartsWith("Turtle"))
         {
-            animator.Play("FlippedByRoot");
-            animator.SetFloat("Horizontal", rb.velocity.x);
-            animator.SetFloat("Vertical", rb.velocity.y);
+            TransitionToState(FlippedState);
         }
     }
 
     public void finshedTilting()
     {
+        tilted = true;
+
+        Debug.Log("HERE");
+        
         OnRootFinishedEnemyGrab?.Invoke();
-        TransitionToState(FlippedState);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.tag == "Player" && currentState != FlippedState)
+        {
+            player.lastAttackedFrom = this;
+            player.TakeDamage(this);
+            return;
+        }
+
         if (other.name == "AttackCheck")
         {
             if (currentState == FlippedState)
             {
                 TakeDamage();
             }
-            else{
+            else
+            {
+                player.lastAttackedFrom = this;
                 player.TransitionToState(player.TakingDamageState);
             }
         }
-        
+
+    }
+
+    public void TransitionToRoaming()
+    {
+        TransitionToState(RoamingState);
     }
 
 
     public void TakeDamage()
     {
-        //TODO: 
-         animator.Play("Damage");
+        animator.Play("Turtle_Flipped_TakingDamage");
+        animator.SetFloat("Horizontal", Rigidbody.velocity.normalized.x);
+        animator.SetFloat("Vertical", Rigidbody.velocity.normalized.y);
+
+        
         if (health <= 1)
         {
             StartCoroutine(die());
