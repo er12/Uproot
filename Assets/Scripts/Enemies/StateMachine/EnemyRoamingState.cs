@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRoamingState : MonoBehaviour//EnemyBaseState
+public class EnemyRoamingState : EnemyBaseState
 {
-    /*static int N = 3, M = 3;
+    static int N = 3, M = 3;
     int[,] movementGrid = new int[N, M];
     Vector2 inGridPosition = new Vector2(1, 1);
     Vector2 direction = new Vector2(0, -1); //looking down
@@ -14,15 +14,38 @@ public class EnemyRoamingState : MonoBehaviour//EnemyBaseState
     {
         this.enemy = enemy;
         enemy.ChangeAnimationState("Roaming");
-       
-
-        enemy.StartCoroutine(move());
     }
 
     public override void Update(EnemyController enemy)
     {
+        float threshold = 0.15f;
+        //Debug.Log(Vector3.Distance(transform.position, destinationPosition));
+        if (Vector3.Distance(enemy.transform.position, enemy.destinationPosition) < threshold)
+        {
+            ///Debug.Log("Destination reached!");
+            enemy.Rigidbody.velocity = Vector2.zero;
+            enemy.currentTile = enemy.destinationTile;
+            enemy.ObtainNewDestination();
+        }
+        else
+        {
+            enemy.Rigidbody.velocity = enemy.currentTile - enemy.destinationTile;
+            enemy.Rigidbody.velocity = Vector2.ClampMagnitude(enemy.Rigidbody.velocity, 1f);
+            enemy.animator.SetFloat("Horizontal", enemy.Rigidbody.velocity.x);
+            enemy.animator.SetFloat("Vertical", enemy.Rigidbody.velocity.y);
+
+            if (enemy.Rigidbody.velocity.x > 0 && !enemy.enemyFacingRight)
+            {
+                flipEnemy(enemy);
+            }
+            else if (enemy.Rigidbody.velocity.x < 0 && enemy.enemyFacingRight)
+            {
+                flipEnemy(enemy);
+            }
+        }
 
     }
+
 
 
     public override void FixUpdate(EnemyController enemy)
@@ -30,42 +53,15 @@ public class EnemyRoamingState : MonoBehaviour//EnemyBaseState
 
     }
 
-    IEnumerator move()
+
+    public void flipEnemy(EnemyController enemy)
     {
-        Vector2 newVector = Vector2.zero;
-        int breaker = 0;
-        while (true)
-        {
-            do
-            {
-                float x = Random.Range(getInferiorLim((int)inGridPosition.x), getSuperiorLim((int)inGridPosition.x));
-                float y = Random.Range(getInferiorLim((int)inGridPosition.y), getSuperiorLim((int)inGridPosition.y)) * (x != 0f ? 0 : 1);
-                newVector = new Vector2(x, y);
-                
-                breaker++;
+        Vector3 theScale = enemy.transform.localScale;
+        theScale.x *= -1;
+        enemy.transform.localScale = theScale;
+        enemy.enemyFacingRight = !enemy.enemyFacingRight;
 
-            } while (breaker <= 20);
-            breaker = 0;
-
-            enemy.Rigidbody.velocity = new Vector2(newVector.x * enemy.moveSpeed, newVector.y * enemy.moveSpeed);
-
-            //enemy.transform.position += (Vector3)(newVector);
-            inGridPosition += newVector;
-
-            yield return new WaitForSeconds(2f);
-        }
     }
-
-    int getSuperiorLim(int n)
-    {
-        int newN = n + 1;
-        return newN >= N ? n : newN;
-    }
-    int getInferiorLim(int n)
-    {
-        int newN = n - 1;
-        return newN < 0 ? n : newN;
-    }*/
 }
 
 

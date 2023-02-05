@@ -10,70 +10,13 @@ public class EnemyController : MonoBehaviour
     public Vector2 currentPosition = Vector2.zero;
     public Vector2 destinationPosition = Vector2.zero;
 
-    private Rigidbody2D rb;
     public Animator animator;
+    private string currentAnimaton;
+    public bool enemyFacingRight = false;
 
-    private void Awake()
-	{
-        rb = GetComponent<Rigidbody2D>();
-        animator = gameObject.GetComponent<Animator>();
-    }
 
-	private void Start()
-    {
-        //Debug.Log(currentTile.x + " " + currentTile.y);
-        ObtainNewDestination();
-        //Debug.Log(destinationTile.x + " " + destinationTile.y);
-        //Debug.Log(destinationPosition);
-        //Debug.Log(currentPosition);
-    }
 
-    public void ObtainNewDestination()
-    {
-        currentPosition = transform.position;
-        while (currentTile == destinationTile)
-        {
-            bool moveDirection = (Random.Range(0, 2) == 0);
-            if (moveDirection)
-            {
-                destinationTile.x = Random.Range(-1, 2);
-            }
-            else
-            {
-                destinationTile.y = Random.Range(-1, 2);
-            }
-        }
-        destinationPosition = currentPosition + currentTile - destinationTile;
-    }
-
-    private void Update()
-    {
-        float threshold = 0.15f;
-        //Debug.Log(Vector3.Distance(transform.position, destinationPosition));
-        if (Vector3.Distance(transform.position, destinationPosition) < threshold)
-        {
-            ///Debug.Log("Destination reached!");
-            rb.velocity = Vector2.zero;
-            currentTile = destinationTile;
-            ObtainNewDestination();
-        }
-        else
-        {
-            rb.velocity = currentTile - destinationTile;
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, 1f);
-            animator.SetFloat("Horizontal", rb.velocity.x);
-            animator.SetFloat("Vertical", rb.velocity.y);
-            if (rb.velocity.x > 0) transform.localScale = new Vector3(-1f, 1f, 1f);
-            else transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-    }
-
-    public void ChangeAnimationState(string newAnimation)
-    {
-        animator.Play(newAnimation);
-    }
-
-    /*private EnemyBaseState currentState;
+    private EnemyBaseState currentState;
     public EnemyBaseState CurrentState
     {
         get { return currentState; }
@@ -84,16 +27,26 @@ public class EnemyController : MonoBehaviour
         get { return rb; }
     }
 
-    public float moveSpeed = 1f;
-
     public bool isEnemyFacingRight = true;  // For determining which way the enemy is currently facing.
 
     public readonly EnemyRoamingState RoamingState = new EnemyRoamingState();
 
+    public SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        ObtainNewDestination();
+
         animator = gameObject.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -116,6 +69,27 @@ public class EnemyController : MonoBehaviour
         currentState?.FixUpdate(this);
     }
 
+    public void ObtainNewDestination()
+    {
+        currentPosition = transform.position;
+        while (currentTile == destinationTile)
+        {
+            bool moveDirection = (Random.Range(0, 2) == 0);
+            if (moveDirection)
+            {
+                destinationTile.x = Random.Range(-1, 2);
+            }
+            else
+            {
+                destinationTile.y = Random.Range(-1, 2);
+            }
+        }
+        destinationPosition = currentPosition + currentTile - destinationTile;
+    }
+
+    // Start is called before the first frame update
+
+
     public void TransitionToState(EnemyBaseState state)
     {
         currentState = state;
@@ -129,10 +103,11 @@ public class EnemyController : MonoBehaviour
         currentAnimaton = newAnimation;
     }
 
-    void gotHitByRoot() {
+    void gotHitByRoot()
+    {
         Debug.Log("gotHitByRoot");
-        
+
         // StartFlipping animation
-    }*/
+    }
 
 }
