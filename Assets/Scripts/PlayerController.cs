@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
         particleSystem.Play(true);
 
         collider2D.enabled = false;
-        spriteRenderer.sortingOrder = 1;
+        //spriteRenderer.sortingOrder = 1;
 
         animator.SetFloat("Horizontal", 0);
         animator.SetFloat("Horizontal", lastDirection.normalized.x);
@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
     {
         TransitionToState(IdleState);
         collider2D.enabled = true;
-        spriteRenderer.sortingOrder = 4;
+        //spriteRenderer.sortingOrder = 4;
     }
 
     //Used by anim
