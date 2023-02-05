@@ -135,19 +135,17 @@ public class EnemyController : MonoBehaviour
     }
 
     public void AnimateGrabbedByRoot()
-    {
+    {        
         if (gameObject.name.StartsWith("Turtle"))
         {
             TransitionToState(FlippedState);
         }
     }
 
-    public void finshedTilting()
+    public void invokeFinishedGrabbing()
     {
         tilted = true;
 
-        Debug.Log("HERE");
-        
         OnRootFinishedEnemyGrab?.Invoke();
     }
 
@@ -184,8 +182,8 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage()
     {
         animator.Play("Turtle_Flipped_TakingDamage");
-        animator.SetFloat("Horizontal", Rigidbody.velocity.normalized.x);
-        animator.SetFloat("Vertical", Rigidbody.velocity.normalized.y);
+        // animator.SetFloat("Horizontal", Rigidbody.velocity.normalized.x);
+        // animator.SetFloat("Vertical", Rigidbody.velocity.normalized.y);
 
         
         if (health <= 1)

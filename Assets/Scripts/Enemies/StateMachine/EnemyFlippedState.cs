@@ -19,15 +19,12 @@ public class EnemyFlippedState : EnemyBaseState
         enemy.animator.SetFloat("Horizontal", enemy.Rigidbody.velocity.x);
         enemy.animator.SetFloat("Vertical", enemy.Rigidbody.velocity.y);
 
+        enemy.StartCoroutine(struggle());
+
     }
 
     public override void Update(EnemyController enemy)
     {
-        if (enemy.tilted && !startedStruggling)
-        {
-            enemy.StartCoroutine(struggle());
-            startedStruggling = true;
-        }
 
     }
 
@@ -40,6 +37,9 @@ public class EnemyFlippedState : EnemyBaseState
 
     IEnumerator struggle()
     {
+        yield return new WaitForSeconds(1f);
+        enemy.invokeFinishedGrabbing();
+        
         enemy.animator.Play("Turtle_OnItsBack");
 
         enemy.animator.SetFloat("Horizontal", direction.normalized.x);
