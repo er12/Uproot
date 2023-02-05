@@ -21,7 +21,7 @@ public class DialogueHelper : MonoBehaviour
 
 	private void Start()
 	{
-		frame.color = new Color32(0, 0, 0, 0);
+		frame.color = new Color32(255, 255, 255, 0);
 		label.text = "";
 	}
 
@@ -29,7 +29,7 @@ public class DialogueHelper : MonoBehaviour
 	{
 		dimmer.SetActive(true);
 		forceEnd = false;
-		frame.color = new Color32(0, 0, 0, 233);
+		frame.color = new Color32(255, 255, 255, 233);
 		label.text = "";
 		for (int i = 0; i < content.Length; i++)
 		{
