@@ -65,8 +65,24 @@ public class PlayerController : MonoBehaviour
 
     public EnemyController lastAttackedFrom;
 
+    public ParticleSystem particleSystem
+    {
+        get
+        {
+            if (_CachedSystem == null)
+                _CachedSystem = GetComponentInChildren<ParticleSystem>();
+            ;
+            return _CachedSystem;
+        }
+    }
+    private ParticleSystem _CachedSystem;
+
+    public bool includeChildren = true;
+
+
     void OnEnable()
     {
+        particleSystem.Stop(includeChildren, ParticleSystemStopBehavior.StopEmitting);
         PlayerWalkingState.PlayerFlipped += Flip;
         RootController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
         //RootController.OnRootEnemyGrab += PlayerGrabPlantWithRoot;
@@ -184,6 +200,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerGrabPlantWithRoot(Vector2 plantPosition)
     {
         ChangeAnimationState("GoingUnderground");
+        particleSystem.Play(true);
 
         collider2D.enabled = false;
         spriteRenderer.sortingOrder = 1;
@@ -227,6 +244,8 @@ public class PlayerController : MonoBehaviour
                 ChangeAnimationState("Player_PoppingOut");
                 animator.SetFloat("Horizontal", lastDirection.x);
                 animator.SetFloat("Vertical", lastDirection.y);
+                particleSystem.Stop(includeChildren, ParticleSystemStopBehavior.StopEmitting);
+
                 break;
             }
             yield return null;
