@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerTakingDamageState : PlayerBaseState
 {
+    public static event System.Action OnTakeDamage;
     PlayerController player;
     EnemyController enemy;
     public float strength = 2f;
@@ -16,7 +17,7 @@ public class PlayerTakingDamageState : PlayerBaseState
         this.enemy = player.lastAttackedFrom;
       
         player.StartCoroutine(recoil());
-
+        OnTakeDamage?.Invoke();
     }
 
     public override void Update(PlayerController player)
