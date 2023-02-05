@@ -97,6 +97,11 @@ public class RootController : MonoBehaviour
         if (other.tag == Constants.GrabableObjects.PlantWarp)
         {
             animator.enabled = false;
+            PlantWarpController plant = other.gameObject.GetComponent<PlantWarpController>();
+            plant.AnimateGrabbedByRoot(transform.position);
+
+            //For playerContorller\
+            
             OnRootPlantWarpGrab?.Invoke(other.transform.position);
             Destroy(gameObject);
         }

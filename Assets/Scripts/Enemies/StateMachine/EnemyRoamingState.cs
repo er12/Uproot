@@ -14,8 +14,7 @@ public class EnemyRoamingState : MonoBehaviour//EnemyBaseState
     {
         this.enemy = enemy;
         enemy.ChangeAnimationState("Roaming");
-        enemy.animator.SetFloat("Horizontal", direction.x);
-        enemy.animator.SetFloat("Vertical", direction.y); 
+       
 
         enemy.StartCoroutine(move());
     }

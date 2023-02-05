@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
-    public BoxCollider2D AttackCheck;
+    public BoxCollider2D collider2D;
 
     bool isAgainstBoulder;
 
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren(typeof(Animator)) as Animator;
 
         rb = GetComponent<Rigidbody2D>();
+        collider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
@@ -159,7 +160,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         /*
                 switch (other.transform.tag)
                 {
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
                     default:
                         break;
                 }
-                */
+        */
     }
 
     public void ChangeAnimationState(string newAnimation)
@@ -183,12 +183,13 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerGrabPlantWithRoot(Vector2 plantPosition)
     {
-        ChangeAnimationState("Player_GoingUnderground");
-        
-        Debug.Log(lastDirection);
-        
-        animator.SetFloat("Horizontal", lastDirection.x);
-        animator.SetFloat("Vertical", lastDirection.y);
+        ChangeAnimationState("Player_GoingUnderground_Right");
+
+        collider2D.enabled = false;
+        spriteRenderer.sortingOrder = 1;
+
+        animator.SetFloat("Horizontal", lastDirection.normalized.x);
+        animator.SetFloat("Vertical", lastDirection.normalized.y);
 
         lastPlantPosition = plantPosition;
     }
@@ -196,6 +197,8 @@ public class PlayerController : MonoBehaviour
     public void TransitionToIdle()
     {
         TransitionToState(IdleState);
+        collider2D.enabled = true;
+        spriteRenderer.sortingOrder = 4;
     }
 
     //Used by anim
@@ -204,32 +207,27 @@ public class PlayerController : MonoBehaviour
         var dust = Instantiate(Resources.Load("Prefabs/Dust") as GameObject, transform.position, Quaternion.identity);
         ChangeAnimationState("Player_CrawlingUnderground");
         StartCoroutine(goToPlant());
-        
     }
 
     IEnumerator goToPlant()
     {
-
         float lerpTime = 2.5f;
         float t = 0f;
 
         while ((Vector2)transform.position != lastPlantPosition)
         {
-
             transform.position = Vector3.Lerp(transform.position, lastPlantPosition, lerpTime * Time.deltaTime);
 
             t = Mathf.Lerp(t, 1f, lerpTime * Time.deltaTime);
 
             if (t > 0.9f)
             {
-
+                //TODO: @fidel, hacer que en el salto se avancen 2 tiles
                 ChangeAnimationState("Player_PoppingOut");
                 animator.SetFloat("Horizontal", lastDirection.x);
                 animator.SetFloat("Vertical", lastDirection.y);
-
                 break;
             }
-
             yield return null;
         }
 

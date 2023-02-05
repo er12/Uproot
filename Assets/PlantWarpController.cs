@@ -12,13 +12,13 @@ public class PlantWarpController : MonoBehaviour
 
     private void OnEnable()
     {
-        RootController.OnRootPlantWarpGrab += AnimateGrabbedByRoot;
+        //RootController.OnRootPlantWarpGrab += AnimateGrabbedByRoot;
 
     }
 
     private void OnDisable()
     {
-        RootController.OnRootPlantWarpGrab -= AnimateGrabbedByRoot;
+        //RootController.OnRootPlantWarpGrab -= AnimateGrabbedByRoot;
 
     }
     void Start()
