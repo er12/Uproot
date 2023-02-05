@@ -103,6 +103,9 @@ public class RootController : MonoBehaviour
             //For playerContorller\
             
             OnRootPlantWarpGrab?.Invoke(other.transform.position);
+            GetComponentInChildren<GroundParticles>().Detach();
+
+            //Invoke("End", 2f);
             Destroy(gameObject);
         }
         else if (other.tag == Constants.GrabableObjects.Enemy)
@@ -114,6 +117,12 @@ public class RootController : MonoBehaviour
             OnRootItemGrab?.Invoke();
         }
     }
+
+    public void End()
+    {
+        Destroy(gameObject);
+    }
+
     private IEnumerator NothingGrabbed()
     {
         spriteRenderer.enabled = true;
