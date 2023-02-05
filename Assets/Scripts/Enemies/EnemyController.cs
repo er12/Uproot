@@ -133,13 +133,13 @@ public class EnemyController : MonoBehaviour
             animator.Play("FlippedByRoot");
             animator.SetFloat("Horizontal", rb.velocity.x);
             animator.SetFloat("Vertical", rb.velocity.y);
+            TransitionToState(FlippedState);
         }
     }
 
     public void finshedTilting()
     {
         OnRootFinishedEnemyGrab?.Invoke();
-        TransitionToState(FlippedState);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
