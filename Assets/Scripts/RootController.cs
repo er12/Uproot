@@ -58,6 +58,7 @@ public class RootController : MonoBehaviour
 
     private IEnumerator Move()
     {
+        GetComponent<Collider2D>().enabled = true;
         /*var rootController = Instantiate(Resources.Load("Prefabs/Root") as GameObject, transform.position, Quaternion.identity).GetComponent<RootController>();
         rootController.SetSprite(hole);
         if (direction.x > 0f) rootController.transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -143,6 +144,7 @@ public class RootController : MonoBehaviour
 
     private IEnumerator NothingGrabbed()
     {
+        GetComponent<Collider2D>().enabled = false;
         spriteRenderer.enabled = true;
         //fixSprite();
         //OnRootNothingGrab?.Invoke();
