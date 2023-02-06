@@ -61,6 +61,7 @@ public class PlayerHUDManager : MonoBehaviour
 			transform.GetChild(7).gameObject.SetActive(true);
 		}
 	}
+
 	private void OnUseKey()
 	{
 		if (transform.GetChild(7).gameObject.activeSelf)

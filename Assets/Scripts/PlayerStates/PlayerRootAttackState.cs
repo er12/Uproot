@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerRootAttackState : PlayerBaseState
 {
     private string animationName = "RootAttack";
-    private string rootRouteString = "Prefabs/RootIndicator";
+    private string rootRouteString = "Prefabs/Root";
     public bool grabbedSomething = false;
     Vector2 rootsPosition;
 
@@ -21,7 +21,6 @@ public class PlayerRootAttackState : PlayerBaseState
 
         //TODO: Remove when finished root
         player.StartCoroutine(RootAttack(player));
-
     }
 
     public override void Update(PlayerController player)
@@ -50,14 +49,8 @@ public class PlayerRootAttackState : PlayerBaseState
         rootsPosition = playersPosition + direction;
 
         yield return new WaitForSeconds(.25f);
-        var rootIndicator = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
-        var rootIndicatorController = rootIndicator.GetComponent<RootController>();
-        rootIndicatorController.Init(player.lastDirection.normalized);
-        //var rootController = Object.Instantiate(Resources.Load("Prefabs/Root") as GameObject, rootsPosition, Quaternion.identity).GetComponent<RootController>();
-
-        //yield return new WaitForSeconds(player.maxRootLengthTime);
-
-
-
+        var root = Object.Instantiate(Resources.Load(rootRouteString) as GameObject, rootsPosition, Quaternion.identity);
+        var rootController = root.GetComponent<RootController>();
+        rootController.Init(player.lastDirection.normalized);
     }
 }

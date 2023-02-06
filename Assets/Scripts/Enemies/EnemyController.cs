@@ -1,80 +1,52 @@
+using Gamelogic.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public static event System.Action OnRootFinishedEnemyGrab;
+
+    private StateMachine<EnemyState> stateMachine;
+    public enum EnemyState
+    {
+        Roaming,
+        Flipped
+    }
+
+    private string currentAnimaton;
+    public bool tilted = false;
     public float health = 5f;
     public float moveSpeed = 1f;
     public Vector2 currentTile = Vector2.zero;
     public Vector2 destinationTile = Vector2.zero;
     public Vector2 currentPosition = Vector2.zero;
     public Vector2 destinationPosition = Vector2.zero;
-
-    public Animator animator;
-    private string currentAnimaton;
-    public bool enemyFacingRight = false;
-
-
-
-    private EnemyBaseState currentState;
-    public EnemyBaseState CurrentState
-    {
-        get { return currentState; }
-    }
+    public bool isEnemyFacingRight = false;
+    private Animator animator;
     private Rigidbody2D rb;
-    public Rigidbody2D Rigidbody
-    {
-        get { return rb; }
-    }
-
-    public bool isEnemyFacingRight = true;  // For determining which way the enemy is currently facing.
-
-    public readonly EnemyRoamingState RoamingState = new EnemyRoamingState();
-    public readonly EnemyFlippedState FlippedState = new EnemyFlippedState();
-
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     PlayerController player;
-
-    public static event System.Action OnRootFinishedEnemyGrab;
-
-    public bool tilted = false;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = gameObject.GetComponent<Animator>();
-    }
-
+    
     private void Start()
     {
-
         player = FindObjectOfType<PlayerController>();
-
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = gameObject.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
 
         ObtainNewDestination();
 
-        animator = gameObject.GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-
-        TransitionToState(RoamingState);
+        stateMachine = new StateMachine<EnemyState>();
+        stateMachine.AddState(EnemyState.Roaming, RoamingStart, RoamingUpdate);
+        stateMachine.AddState(EnemyState.Flipped, FlippedStart);
+        stateMachine.CurrentState = EnemyState.Roaming;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (CurrentState == null) // For when reloading unity
-        {
-            TransitionToState(RoamingState);
-        }
-
-        currentState?.Update(this);
-    }
-
-    void FixedUpdate()
-    {
-        currentState?.FixUpdate(this);
+        if (stateMachine == null) Start();
+        stateMachine.Update();
     }
 
     public void ObtainNewDestination()
@@ -95,15 +67,6 @@ public class EnemyController : MonoBehaviour
         destinationPosition = currentPosition + currentTile - destinationTile;
     }
 
-    // Start is called before the first frame update
-
-
-    public void TransitionToState(EnemyBaseState state)
-    {
-        currentState = state;
-        currentState.EnterState(this);
-    }
-
     public void ChangeAnimationState(string newAnimation)
     {
         if (currentAnimaton == newAnimation) return;
@@ -111,7 +74,7 @@ public class EnemyController : MonoBehaviour
         currentAnimaton = newAnimation;
     }
 
-    void gotHitByRoot()
+    void GotHitByRoot()
     {
         Debug.Log("gotHitByRoot");
 
@@ -120,10 +83,9 @@ public class EnemyController : MonoBehaviour
 
     void BackToFlippedAnim()
     {
-        if(currentState == FlippedState)
+        if(stateMachine.CurrentState == EnemyState.Flipped)
             animator.Play("Turtle_OnItsBack");
     }
-
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -138,11 +100,11 @@ public class EnemyController : MonoBehaviour
     {        
         if (gameObject.name.StartsWith("Turtle"))
         {
-            TransitionToState(FlippedState);
+            stateMachine.CurrentState = EnemyState.Flipped;
         }
     }
 
-    public void invokeFinishedGrabbing()
+    public void InvokeFinishedGrabbing()
     {
         tilted = true;
 
@@ -151,7 +113,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.tag == "Player" && currentState != FlippedState)
+        if (other.transform.tag == "Player" && stateMachine.CurrentState != EnemyState.Flipped)
         {
             player.lastAttackedFrom = this;
             player.TakeDamage(this);
@@ -160,7 +122,7 @@ public class EnemyController : MonoBehaviour
 
         if (other.name == "AttackCheck")
         {
-            if (currentState == FlippedState)
+            if (stateMachine.CurrentState == EnemyState.Flipped)
             {
                 TakeDamage();
             }
@@ -173,11 +135,32 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public void TransitionToRoaming()
+    public void FlippedStart()
     {
-        TransitionToState(RoamingState);
+        animator.Play("FlippedByRoot");
+        rb.velocity = Vector2.zero;
+
+        animator.SetFloat("Horizontal", rb.velocity.x);
+        animator.SetFloat("Vertical", rb.velocity.y);
+
+        StartCoroutine(Struggle());
     }
 
+    IEnumerator Struggle()
+    {
+        yield return new WaitForSeconds(1f);
+        InvokeFinishedGrabbing();
+
+        animator.Play("Turtle_OnItsBack");
+        animator.SetFloat("Horizontal", rb.velocity.normalized.x);
+        animator.SetFloat("Vertical", rb.velocity.normalized.y);
+
+        yield return new WaitForSeconds(3f);
+        // TODO:? Animate flip
+
+        animator.Play("Roaming");
+        stateMachine.CurrentState = EnemyState.Roaming;
+    }
 
     public void TakeDamage()
     {
@@ -185,18 +168,17 @@ public class EnemyController : MonoBehaviour
         // animator.SetFloat("Horizontal", Rigidbody.velocity.normalized.x);
         // animator.SetFloat("Vertical", Rigidbody.velocity.normalized.y);
 
-        
         if (health <= 1)
         {
-            StartCoroutine(die());
+            StartCoroutine(Die());
         }
         else
         {
             health--;
         }
-
     }
-    IEnumerator die()
+
+    IEnumerator Die()
     {
         {
             yield return new WaitForSeconds(0.3f);
@@ -204,4 +186,45 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void RoamingStart()
+    {
+        ChangeAnimationState("Roaming");
+    }
+
+    public void RoamingUpdate()
+    {
+        float threshold = 0.15f;
+        //Debug.Log(Vector3.Distance(transform.position, destinationPosition));
+        if (Vector3.Distance(transform.position, destinationPosition) < threshold)
+        {
+            //Debug.Log("Destination reached!");
+            rb.velocity = Vector2.zero;
+            currentTile = destinationTile;
+            ObtainNewDestination();
+        }
+        else
+        {
+            rb.velocity = currentTile - destinationTile;
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, 1f);
+            animator.SetFloat("Horizontal", rb.velocity.x);
+            animator.SetFloat("Vertical", rb.velocity.y);
+
+            if (rb.velocity.x > 0 && !isEnemyFacingRight)
+            {
+                Flip();
+            }
+            else if (rb.velocity.x < 0 && isEnemyFacingRight)
+            {
+                Flip();
+            }
+        }
+    }
+
+    public void Flip()
+    {
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+        isEnemyFacingRight = !isEnemyFacingRight;
+    }
 }
