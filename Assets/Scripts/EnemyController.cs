@@ -129,7 +129,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 player.lastAttackedFrom = this;
-                player.TransitionToState(player.TakingDamageState);
+                player.stateMachine.CurrentState = PlayerController.PlayerState.TakingDamage;
             }
         }
 

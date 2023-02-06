@@ -8,14 +8,14 @@ public class PlayerHUDManager : MonoBehaviour
 
 	private void Start()
 	{
-		PlayerTakingDamageState.OnTakeDamage += OnTookDamage;
+		PlayerController.OnTakeDamage += OnTookDamage;
 		Chest.OnObtainKey += OnObtainKey;
 		Chest.OnUseKey += OnUseKey;
 	}
 
 	private void OnDestroy()
 	{
-		PlayerTakingDamageState.OnTakeDamage -= OnTookDamage;
+		PlayerController.OnTakeDamage -= OnTookDamage;
 		Chest.OnObtainKey -= OnObtainKey;
 		Chest.OnUseKey -= OnUseKey;
 	}

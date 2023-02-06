@@ -42,9 +42,9 @@ public class NPC : MonoBehaviour
 		var player = FindObjectOfType<PlayerController>();
 		var originalSprite = GetComponent<SpriteRenderer>().sprite;
 
-        player.TransitionToState(player.TalkingState);
+		player.stateMachine.CurrentState = PlayerController.PlayerState.Talking;
 
-        var horizontalDistance = Mathf.Abs(player.transform.position.x - transform.position.x);
+		var horizontalDistance = Mathf.Abs(player.transform.position.x - transform.position.x);
 		var verticalDistance = Mathf.Abs(player.transform.position.y - transform.position.y);
 		if (horizontalDistance > verticalDistance)
 		{
@@ -78,9 +78,9 @@ public class NPC : MonoBehaviour
 		coroutine = null;
 		transform.localScale = new Vector3(1, 1, 1);
 		GetComponent<SpriteRenderer>().sprite = originalSprite;
-        player.TransitionToState(player.IdleState);
+		player.stateMachine.CurrentState = PlayerController.PlayerState.Idle;
 
-    }
+	}
 
 	private void Update()
 	{
