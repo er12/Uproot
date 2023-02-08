@@ -69,7 +69,7 @@ public class Chest : MonoBehaviour
 	public IEnumerator PlayerObtainsItem()
 	{
 		var player = FindObjectOfType<PlayerController>();
-		player.TransitionToState(player.TalkingState);
+		player.stateMachine.CurrentState = PlayerController.PlayerState.Talking;
 		player.animator.enabled = false;
 		player.GetComponent<SpriteRenderer>().sprite = obtained;
 		if (!requiresKey) OnObtainKey?.Invoke();
