@@ -84,7 +84,7 @@ public class RootController : MonoBehaviour
             plant.AnimateGrabbedByRoot(transform.position);
 
             //For playerContorller
-            
+
             OnRootPlantWarpGrab?.Invoke(other.transform.position, plant.sproutForce);
             GetComponentInChildren<GroundParticles>().Detach();
 
@@ -92,7 +92,7 @@ public class RootController : MonoBehaviour
         }
         else if (other.tag == Constants.GrabableObjects.Enemy)
         {
-            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.AnimateGrabbedByRoot();
             GetComponentInChildren<GroundParticles>().Detach();
             Destroy(gameObject);

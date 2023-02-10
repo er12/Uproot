@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 4f;
     public float currentHealth;
     public float dodgeSpeed = 3f;
-    public EnemyController lastAttackedFrom;
+    public Enemy lastAttackedFrom;
 
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D col;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         ps.Stop(includeChildren, ParticleSystemStopBehavior.StopEmitting);
         RootController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
-        EnemyController.OnRootFinishedEnemyGrab += TransitionToIdle;
+        Enemy.OnRootFinishedEnemyGrab += TransitionToIdle;
         //RootController.OnRootItemGrab += PlayerGrabPlantWithRoot;
         RootController.OnRootNothingGrab += TransitionToIdle;
     }
@@ -113,8 +113,8 @@ public class PlayerController : MonoBehaviour
         stateMachine.Update();
     }
 
-	private void FixedUpdate()
-	{
+    private void FixedUpdate()
+    {
         if (stateMachine.CurrentState == PlayerState.Walking)
         {
             // player.Rigidbody.MovePosition(player.Rigidbody.position + movement * player.moveSpeed * Time.deltaTime);
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-	private void FinishAttacking() //USED BY ANIMATION
+    private void FinishAttacking() //USED BY ANIMATION
     {
         isAttacking = false;
     }
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    public void TakeDamage(EnemyController enemy)
+    public void TakeDamage(Enemy enemy)
     {
         if (stateMachine.CurrentState == PlayerState.TakingDamage || stateMachine.CurrentState == PlayerState.Talking)
         {
@@ -347,7 +347,7 @@ public class PlayerController : MonoBehaviour
         OnTakeDamage?.Invoke();
     }
 
-    IEnumerator Recoil(EnemyController enemy)
+    IEnumerator Recoil(Enemy enemy)
     {
         Vector2 recoilDirection = transform.position - enemy.transform.position;
         rb.AddForce(recoilDirection * strength, ForceMode2D.Impulse);

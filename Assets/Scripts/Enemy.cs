@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public static event System.Action OnRootFinishedEnemyGrab;
 
@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     PlayerController player;
-    
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
 
     void BackToFlippedAnim()
     {
-        if(stateMachine.CurrentState == EnemyState.Flipped)
+        if (stateMachine.CurrentState == EnemyState.Flipped)
             animator.Play("Turtle_OnItsBack");
     }
 
@@ -97,7 +97,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public void AnimateGrabbedByRoot()
-    {        
+    {
         if (gameObject.name.StartsWith("Turtle"))
         {
             stateMachine.CurrentState = EnemyState.Flipped;
