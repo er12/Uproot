@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     void OnEnable()
     {
         ps.Stop(includeChildren, ParticleSystemStopBehavior.StopEmitting);
-        RootController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
+        PlantWarpController.OnRootPlantWarpGrab += PlayerGrabPlantWithRoot;
         Enemy.OnRootFinishedEnemyGrab += TransitionToIdle;
         //RootController.OnRootItemGrab += PlayerGrabPlantWithRoot;
         RootController.OnRootNothingGrab += TransitionToIdle;
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     void OnDisable()
     {
-        RootController.OnRootPlantWarpGrab -= PlayerGrabPlantWithRoot;
+        PlantWarpController.OnRootPlantWarpGrab -= PlayerGrabPlantWithRoot;
         RootController.OnRootNothingGrab -= TransitionToIdle;
     }
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IGrabbable
 {
     public static event System.Action OnRootFinishedEnemyGrab;
 
@@ -226,5 +226,10 @@ public class Enemy : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
         isEnemyFacingRight = !isEnemyFacingRight;
+    }
+
+	public void Grab()
+	{
+        AnimateGrabbedByRoot();
     }
 }

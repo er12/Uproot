@@ -8,7 +8,6 @@ using Constants;
 [RequireComponent(typeof(AudioSource))]
 public class RootController : MonoBehaviour
 {
-    public static event Action<Vector2, float> OnRootPlantWarpGrab;
     public static event Action OnRootItemGrab;
     public static event Action OnRootNothingGrab;
 
@@ -77,30 +76,43 @@ public class RootController : MonoBehaviour
                0.50f);
             return;
         }
-        if (other.tag == Constants.GrabableObjects.PlantWarp)
+        var grabbable = other.GetComponent<IGrabbable>();
+        if (grabbable != null)
         {
+            StopCoroutine(Move());
+            grabbable.Grab();
+            GetComponentInChildren<GroundParticles>().Detach();
+            Destroy(gameObject);
+        }
+        /*if (other.tag == Constants.GrabableObjects.PlantWarp)
+        {
+            StopCoroutine(Move());
+
             animator.enabled = false;
             PlantWarpController plant = other.gameObject.GetComponent<PlantWarpController>();
             plant.AnimateGrabbedByRoot(transform.position);
 
             //For playerContorller
-
+            
             OnRootPlantWarpGrab?.Invoke(other.transform.position, plant.sproutForce);
             GetComponentInChildren<GroundParticles>().Detach();
 
-            Destroy(gameObject);
+            Destroy(gameObject); //Change this to reach the destination first (before destroying)
         }
         else if (other.tag == Constants.GrabableObjects.Enemy)
         {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            StopCoroutine(Move());
+
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
             enemy.AnimateGrabbedByRoot();
-            GetComponentInChildren<GroundParticles>().Detach();
-            Destroy(gameObject);
+            GetComponentInChildren<GroundParticles>()?.Detach();
+
+            Destroy(gameObject); //Change this to reach the destination first (before destroying)
         }
         else if (other.tag == Constants.GrabableObjects.Item)
         {
             OnRootItemGrab?.Invoke();
-        }
+        }*/
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -131,7 +143,7 @@ public class RootController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void retractRoot()
+	public void RetractRoot() //USED BY ANIMATION
     {
         audioSource.Pause();
         spriteRenderer.enabled = false;
@@ -144,4 +156,9 @@ public class RootController : MonoBehaviour
     //     spriteRenderer.enabled = false;
     //     spriteRenderer.transform.position -= (Vector3)new Vector2(0, direction.y); // to move pivot back
     // }
+
+    private void OnDisable()
+    {
+        StopCoroutine(Move());
+    }
 }

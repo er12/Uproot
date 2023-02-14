@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
-public class PlantWarpController : MonoBehaviour
+public class PlantWarpController : MonoBehaviour, IGrabbable
 {
+    public static event Action<Vector2, float> OnRootPlantWarpGrab;
+
     private int waypointsLength;
     private int counter = 0;
     private Animator animator;
@@ -16,17 +19,26 @@ public class PlantWarpController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void AnimateGrabbedByRoot(Vector2 pos)
+    public void AnimateGrabbedByRoot(Vector2 pos) //DEPRECATED, DELETE THIS FUNCTION
     {
         animator.Play("Plant_GrabbedByRoot");
     }
 
-    public void GoToNextWaypoint()
+    public void GoToNextWaypoint() //USED BY ANIMATION
     {
-        transform.position = wayPoints[counter % waypointsLength].transform.position;
-        
-        counter++;
+        if (waypointsLength > 0)
+        {
+            transform.position = wayPoints[counter % waypointsLength].transform.position;
+
+            counter++;
+        }
         spriteRenderer.enabled = true;
         animator.Play("Plant_Growing");
+    }
+
+	public void Grab()
+    {
+        animator.Play("Plant_GrabbedByRoot");
+        OnRootPlantWarpGrab?.Invoke(transform.position, sproutForce);
     }
 }
