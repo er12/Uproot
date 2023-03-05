@@ -60,7 +60,7 @@ TextureImporter:
       213: -6235610483011497517
     second: rootsV2_49
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -80,6 +80,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -111,10 +113,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -130,6 +136,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -552,6 +582,26 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      rootsV2_29: -4703922473528879574
+      rootsV2_30: -3740578338386054529
+      rootsV2_31: -6697210965408043203
+      rootsV2_32: -2273361402842607234
+      rootsV2_33: -1749308082471607970
+      rootsV2_34: -587991032478482802
+      rootsV2_35: 4211618161493542690
+      rootsV2_36: 2950484751485822157
+      rootsV2_37: -6582561294396053941
+      rootsV2_38: 5868032672143938010
+      rootsV2_39: 8907165984288735447
+      rootsV2_45: -7156143862071282038
+      rootsV2_46: 8353154790778905141
+      rootsV2_47: 7732289662016382488
+      rootsV2_48: -6634858519325796133
+      rootsV2_49: -6235610483011497517
+      rootsV2_5: -6060317027916945769
+      rootsV2_6: 1178414241163849317
+      rootsV2_7: 8364576365289772110
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

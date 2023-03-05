@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
         }
 
         lastAttackedFrom = enemy;
+        // playerStats.health -= damage;
         currentHealth -= 1;
         stateMachine.CurrentState = PlayerState.TakingDamage;
     }
@@ -344,6 +345,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         StartCoroutine(Recoil(lastAttackedFrom));
+
         OnTakeDamage?.Invoke();
     }
 

@@ -87,7 +87,7 @@ TextureImporter:
       213: -540479432389219350
     second: RootJumps_58
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -108,6 +108,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -117,8 +118,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -146,6 +147,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -161,6 +163,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -772,6 +798,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      RootJumps_11: -4073341677132827851
+      RootJumps_12: -2298323981398981287
+      RootJumps_16: -2884539148632972906
+      RootJumps_17: -4397534886145597303
+      RootJumps_18: 810591937733462689
+      RootJumps_19: -1378673508636020733
+      RootJumps_20: 8501839955249968710
+      RootJumps_22: 1372716108167572338
+      RootJumps_25: -5537269761408269951
+      RootJumps_33: 8190155277970213816
+      RootJumps_34: 621960955913964530
+      RootJumps_35: -1375356057802557143
+      RootJumps_36: 2137308309570242148
+      RootJumps_37: -8264175444236640182
+      RootJumps_38: 5159208927030781628
+      RootJumps_39: -371235138725878197
+      RootJumps_40: -740525500569501411
+      RootJumps_41: -2732545303928046007
+      RootJumps_42: 8909866707437843198
+      RootJumps_49: -153301078788806771
+      RootJumps_50: -3669878372395749364
+      RootJumps_51: -2218925763366270751
+      RootJumps_52: 3197281536432645896
+      RootJumps_53: 2898129177639589609
+      RootJumps_54: 1553164332523409173
+      RootJumps_56: -3465878081301844537
+      RootJumps_57: 4198401259028011131
+      RootJumps_58: -540479432389219350
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

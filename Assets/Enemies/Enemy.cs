@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour, IGrabbable
         Roaming,
         Flipped
     }
+    
+    public MainInstances mainInstances;
 
     private string currentAnimaton;
     public bool tilted = false;
@@ -30,7 +32,7 @@ public class Enemy : MonoBehaviour, IGrabbable
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = mainInstances.playerController;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
