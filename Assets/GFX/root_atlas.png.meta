@@ -3,7 +3,7 @@ guid: bfbd8b03bad407045979920be13997fc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -24,6 +24,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -62,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -77,6 +79,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -625,6 +651,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      root_atlas_0: -1944617289660482498
+      root_atlas_1: 8039408287653912975
+      root_atlas_11: 8094035052727906589
+      root_atlas_12: -9046203508644872386
+      root_atlas_13: 8298126910812873162
+      root_atlas_14: 6689907405987191109
+      root_atlas_15: 2786984681851318954
+      root_atlas_16: -274485598656552892
+      root_atlas_17: 2086752102804673456
+      root_atlas_18: 7962465679936296452
+      root_atlas_19: -6108781298400878497
+      root_atlas_20: -2598479811524421552
+      root_atlas_21: 8951776419580114177
+      root_atlas_22: -6574824623222042629
+      root_atlas_23: -6248255126120856446
+      root_atlas_24: 3783844390538752595
+      root_atlas_28: 1093557280926013245
+      root_atlas_29: 8220560229634075899
+      root_atlas_3: -4225591362930417837
+      root_atlas_30: 1284014248716837562
+      root_atlas_31: 4028085866572701413
+      root_atlas_32: -7228858124350938219
+      root_atlas_33: -4599605476082181638
+      root_atlas_4: -6768229247492636757
+      root_atlas_5: -2198359758543513925
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
